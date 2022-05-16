@@ -1,9 +1,18 @@
 div.content {
     position:fixed;
     top:50px;
-    left:0px;
-    width:100%;
+    left:300px;
+    width:calc(100% - 300px);
     height:calc(100% - 50px);
     box-sizing: border-box;
-    background-color: #ff0;
+    background-color: #e4ffe4;
+    transition:left 0.3s, width 0.3s;
 }
+
+
+@media screen and (max-width: 900px) {
+    div.content {
+      left:100%;
+      width:100%;
+    }
+  }

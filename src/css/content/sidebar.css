@@ -1,0 +1,36 @@
+div.sidebar {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  width: 300px;
+  height: calc(100% - 50px);
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #fefefe;
+  transition:width 0.3s;
+}
+
+div.sidebar * {
+    vertical-align: middle;
+}
+
+div.sidebar p.user {
+    margin-top:0px;
+}
+
+div.sidebar img {
+    height:30px;
+    margin-right: 5px;
+}
+
+div.sidebar h3 {
+    margin:0px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  div.sidebar {
+    width: 100%;
+  }
+}

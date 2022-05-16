@@ -29,7 +29,7 @@ export async function login(auth?: Credentials): Promise<boolean> {
 
 export async function logout() {
   isLoggedIn.set(false);
-  localStorage.setItem(egTokenKey, null);
+  localStorage.removeItem(egTokenKey);
 }
 
 export interface Credentials {
