@@ -1,0 +1,69 @@
+div.login div.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center;
+  margin-top:-50px;
+}
+
+div.login {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #e4ffe4;
+}
+
+div.login div.holder {
+
+  width: 290px;
+  height: 345px;
+  background-color: #fff9;
+  border: #0003 1px solid;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top:50px;
+  box-sizing: border-box;
+}
+
+div.login div.holder input,
+div.login div.holder button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+div.login div.center img.logo {
+  height: 100px;
+  margin-bottom: -50px;
+}
+
+div.login div.holder input[type="password"] {
+  margin-bottom: 10px;
+}
+
+div.login div.holder h1 {
+  font-weight: 100;
+  margin-top:10px;
+}
+
+div.login div.center div.status {
+  position:absolute;
+  bottom:-50px;
+  left:0;
+  width:290px;
+  height:40px;
+  padding:7.5px;
+  background-color: #00000014;
+  box-sizing: border-box;
+  color:#000a;
+  text-align: center;
+  border-radius: 5px;
+}
