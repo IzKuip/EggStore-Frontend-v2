@@ -3,7 +3,7 @@ import type { Credentials } from "./auth";
 
 export async function apiReq(
   path: string,
-  params: { [key: string]: string },
+  params: { [key: string]: any },
   auth?: string | Credentials
 ): Promise<{
   valid: boolean;

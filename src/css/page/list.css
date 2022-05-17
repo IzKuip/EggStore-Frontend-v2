@@ -1,0 +1,18 @@
+div.list {
+    width:calc(100% - 20px);
+    height:calc(100% - 20px);
+    background-color: #fffa;
+    margin:10px;
+    padding:10px;
+    box-sizing: border-box;
+    border:#0002 1px solid;
+    border-radius: 7.5px;
+}
+
+div.list div.header button {
+    padding:5px;
+}
+
+div.list div.header button * {
+    vertical-align: middle;
+}
