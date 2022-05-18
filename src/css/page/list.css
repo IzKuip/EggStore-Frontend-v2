@@ -43,6 +43,20 @@ div.list div.content .options {
   width: 75px;
 }
 
+div.list div.content p.loading {
+  text-align: center;
+  margin-top:20px;
+}
+
+div.list div.content p.loading span {
+  display:block;
+  margin-top:10px;
+}
+
+div.list div.content p.loading span.material-icons {
+  font-size: 30px;
+}
+
 div.list div.content .count img.egg {
   height: 15px;
   vertical-align: middle;

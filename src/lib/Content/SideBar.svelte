@@ -8,6 +8,7 @@
   } from "../../ts/env";
   import "../../css/content/sidebar.css";
   import logo from "../../assets/egg.png";
+  import { loadFromStore } from "../../ts/page/main";
 
   let username: string = "niemand";
 
@@ -16,6 +17,10 @@
       username = atob(localStorage.getItem(egTokenKey)).split(":")[0];
     }
   });
+
+  function account() {
+    loadFromStore("userman");
+  }
 </script>
 
 <div class="sidebar">
@@ -38,9 +43,14 @@
       </p>
       <br />
       <p>
-        Incorrecte paginaweergave, werkt de registratie niet of algemene {appDstName} storing? Meld het zo snel
-        als mogelijk en het word verholpen.
+        Incorrecte paginaweergave, werkt de registratie niet of algemene {appDstName}
+        storing? Meld het zo snel als mogelijk en het word verholpen.
       </p>
+      <br />
+      <button class="small fullwidth" on:click={account}>
+        <span class="material-icons button">person</span>
+        <span>Account</span>
+      </button>
     </div>
   {/if}
 </div>

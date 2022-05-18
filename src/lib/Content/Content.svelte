@@ -1,12 +1,12 @@
 <script lang="ts">
   import { currentPage } from "../../ts/env";
   import "../../css/content/content.css";
-import { onMount } from "svelte";
-import { loadFromStore } from "../../ts/page/main";
+  import { onMount } from "svelte";
+  import { loadFromStore } from "../../ts/page/main";
 
   onMount(() => {
-      loadFromStore("list")
-  })
+    loadFromStore("list");
+  });
 </script>
 
 <div class="pagecontent">

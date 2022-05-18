@@ -1,6 +1,6 @@
 <script lang="ts">
   import { logout } from "../../ts/api/auth";
-  import { appDstName, sideBarOpened } from "../../ts/env";
+  import { appDstName, currentPage, sideBarOpened } from "../../ts/env";
   import "../../css/content/headerbar.css";
   import logo from "../../assets/egg.png";
   import {get} from "svelte/store";
@@ -15,6 +15,10 @@
     <span>{appDstName}</span>
   </h3>
   <div class="right">
+    <div class="pagedisp">
+      <span class="material-icons">preview</span>
+      <span>{#if $currentPage}{$currentPage.name}{:else}Onbekend{/if}</span>
+    </div>
     <button class="material-icons" on:click={logout}>logout</button>
   </div>
 </div>

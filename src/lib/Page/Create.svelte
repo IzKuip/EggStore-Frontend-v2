@@ -1,6 +1,6 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { editData, egTokenKey } from "../../ts/env";
+  import { egTokenKey } from "../../ts/env";
 
   import { onMount } from "svelte";
 
@@ -8,10 +8,6 @@
   import { loadFromStore } from "../../ts/page/main";
 
   import logo from "../../assets/egg.png";
-  import type { EggEntry } from "src/ts/api/egg";
-  import { get } from "svelte/store";
-
-  let data: EggEntry;
 
   let eggCount: number = 0;
   let disableDecr: boolean = false;
@@ -20,10 +16,6 @@
   let dateInput: any;
 
   onMount(async () => {
-    data = get(editData);
-    registrar = data.registrar;
-    eggCount = parseInt(data.amount as string);
-    dateInput = data.timestamp;
     checkDisabledState();
   });
 
@@ -44,9 +36,8 @@
       console.log("Saving...");
 
       await apiReq(
-        `eggs/change`,
+        `eggs/register`,
         {
-          id: data.id,
           registrar,
           timestamp: dateInput,
           amount: eggCount,
@@ -74,26 +65,6 @@
     disableIncr = !!(eggCount == 6);
     disableDecr = !!(eggCount == 0);
   }
-
-  function back() {
-    loadFromStore("details");
-  }
-
-  async function del() {
-    await apiReq(
-      `eggs/delete`,
-      {
-        id: data.id,
-      },
-      localStorage.getItem(egTokenKey)
-    );
-
-    console.log("Deleted.");
-
-    setTimeout(() => {
-      close();
-    }, 100);
-  }
 </script>
 
 <div class="list">
@@ -101,11 +72,8 @@
     <button class="suggested" on:click={s}>
       <span class="material-icons">save</span><span> Opslaan</span>
     </button>
-    <button on:click={back}>
-      <span class="material-icons">arrow_back_ios_new</span><span> Terug</span>
-    </button>
-    <button on:click={del}>
-      <span class="material-icons">delete</span><span> Verwijderen</span>
+    <button on:click={close}>
+      <span class="material-icons">cancel</span><span> Annuleren</span>
     </button>
   </div>
   <div class="content fullheight">

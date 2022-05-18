@@ -58,6 +58,25 @@ button.suggested:active {
   background-color: #0a0a;
 }
 
+button.small {
+  padding:5px !important;
+}
+
+button.fullwidth {
+  width:100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+button * {
+  vertical-align: middle;
+}
+
+button span.material-icons.button {
+  font-size:18px;
+  margin-right:5px
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

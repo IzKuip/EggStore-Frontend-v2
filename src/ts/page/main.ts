@@ -1,9 +1,11 @@
-import { currentPage } from "../env";
+import { currentPage, sideBarOpened } from "../env";
 import type { Page } from "./interfaces";
 import { PageStore } from "./store";
 
 export function openPage(content:Page) {
     currentPage.set(content);
+
+    sideBarOpened.set(false);
 }
 
 export function loadFromStore(page:string) {

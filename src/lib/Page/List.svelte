@@ -1,26 +1,56 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { egTokenKey } from "../../ts/env";
+  import { appDstName, eggCount, egTokenKey } from "../../ts/env";
 
   import { onMount } from "svelte";
 
   import "../../css/page/list.css";
-import Entry from "./list/Entry.svelte";
+  import Entry from "./list/Entry.svelte";
+  import { loadFromStore, openPage } from "../../ts/page/main";
+  import type { EggEntry } from "src/ts/api/egg";
+  import { get } from "svelte/store";
 
   let eggList = [];
   onMount(async () => {
     const req = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
 
     eggList = req.data as [];
+
+    eggCount.set(0);
   });
+
+  function create() {
+    loadFromStore("create");
+  }
+
+  async function reload() {
+    eggList = [];
+    setTimeout(async () => {
+      const req = await apiReq(
+        "eggs/get",
+        {},
+        localStorage.getItem(egTokenKey)
+      );
+
+      eggList = req.data as [];
+
+      eggCount.set(0);
+    }, 1000);
+  }
+
+  function count(data: EggEntry) {
+    eggCount.set(get(eggCount) + parseInt(data.amount as string));
+
+    return "";
+  }
 </script>
 
 <div class="list">
   <div class="header">
-    <button class="suggested">
+    <button class="suggested" on:click={create}>
       <span class="material-icons">add</span><span> Toevoegen</span>
     </button>
-    <button>
+    <button on:click={reload}>
       <span class="material-icons">sync</span><span> Herladen</span>
     </button>
   </div>
@@ -30,9 +60,14 @@ import Entry from "./list/Entry.svelte";
     <span class="person">Wie?</span>
   </div>
   <div class="content">
-
     {#each eggList as entry}
-      <Entry data={entry}/>
+      {count(entry)}
+      <Entry data={entry} />
     {/each}
+    {#if !eggList.length}
+    <p class="loading">
+      <span class="material-icons">hourglass_empty</span><span>Verbinden met {appDstName} server
+      </span>
+    </p>{/if}
   </div>
 </div>
