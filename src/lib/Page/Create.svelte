@@ -25,7 +25,7 @@ import { log } from "../../ts/logs/main";
   }
 
   function incr() {
-    log("Create.svelte","Aantal verandering","Incrementatie geselecteerd...");
+    log("Create.svelte","Aantal","Incrementatie geselecteerd...");
     if (eggCount < 6) eggCount++;
 
     checkDisabledState();
@@ -52,7 +52,7 @@ import { log } from "../../ts/logs/main";
   }
 
   function decr() {
-    log("Create.svelte","Aantal verandering","decrementatie geselecteerd...");
+    log("Create.svelte","Aantal","decrementatie geselecteerd...");
     if (eggCount > 0) eggCount--;
 
     checkDisabledState();

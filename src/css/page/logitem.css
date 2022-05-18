@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+div.logentry {
+    width:calc(100% - 10px);
+    margin:5px;
+    border-bottom: #0003 1px solid;
+    margin-bottom: 10px;
+}
+
+div.logentry * {
+    padding:5px;
+    border-radius: 5px;
+    background-color: #00000013;
+    display: inline-block;
+    margin-bottom: 10px;
+    height:30px;
+    box-sizing: border-box;
+}
+
+div.logentry div.category {
+    background-color: #fabd2f79;
+
+}
+
+div.logentry div + div {
+    margin-left:5px;
+}
+
+div.logentry div.message {
+    display:block;
+    margin-left:0 !important;
+    background-color: transparent;
+    padding:0;
+    margin-top:5px;
+    height:unset;
+    min-height:20px;
+}
+
+div.logentry div.timestamp {
+    background-color: #78bba15d;
+}
+
+div.logentry div:not(.module):not(.message) {
+    padding-top:7.5px;
+}
+
+div.logentry div.module {
+    background-color: #d66a8777;
+    font-family: 'Source Code Pro', monospace;
+}

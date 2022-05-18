@@ -4,7 +4,7 @@ import type { Page } from "./interfaces";
 import { PageStore } from "./store";
 
 export function openPage(content:Page) {
-    log("openPage","Pagina geopend",`Pagina ${content.name} is geopend.`);
+    log("openPage","Pagina",`Pagina ${content.name} is geopend.`);
     currentPage.set(content);
 
     sideBarOpened.set(false);

@@ -8,8 +8,9 @@
   import { loadFromStore } from "../../ts/page/main";
 
   import logo from "../../assets/egg.png";
-  import type { EggEntry } from "src/ts/api/egg";
+  import type { EggEntry } from "../../ts/api/egg";
   import { get } from "svelte/store";
+import { log } from "../../ts/logs/main";
 
   let data: EggEntry;
 
@@ -32,12 +33,16 @@
   }
 
   function incr() {
+    log("Edit.svelte","Aantal","Incrementatie geselecteerd...");
+
     if (eggCount < 6) eggCount++;
 
     checkDisabledState();
   }
 
   async function s() {
+    log("Edit.svelte","Opslaan","Wijzigingen worden opgeslagen...");
+
     if (registrar && dateInput && eggCount >= 0) {
       await apiReq(
         `eggs/change`,
@@ -57,6 +62,8 @@
   }
 
   function decr() {
+    log("Edit.svelte","Aantal","Decrementatie geselecteerd...");
+
     if (eggCount > 0) eggCount--;
 
     checkDisabledState();
@@ -72,6 +79,7 @@
   }
 
   async function del() {
+    log("Edit.svelte","Verwijdering",`#${data.id} wordt verwijderd.`);
     await apiReq(
       `eggs/delete`,
       {

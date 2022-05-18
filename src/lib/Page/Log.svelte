@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import { loadFromStore } from "../../ts/page/main";
   import { systemLog } from "../../ts/logs/main";
+import Item from "./log/Item.svelte";
 
   let render = false;
 
@@ -31,10 +32,7 @@
     </div>
     <div class="content fullheight">
         {#each $systemLog as entry}
-            {entry.timestamp}
-            {entry.caller}
-            {entry.title}
-            {entry.message}
+        <Item data={entry}/>
         {/each}
     </div>
   </div>

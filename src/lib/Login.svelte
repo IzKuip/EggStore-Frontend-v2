@@ -7,6 +7,7 @@
   import { login } from "../ts/api/auth";
   import { get } from "svelte/store";
   import { apiReq } from "../ts/api/main";
+import { log } from "../ts/logs/main";
 
   let username: string;
   let password: string;
@@ -52,6 +53,8 @@
   }
 
   export function setStatus(txt: string) {
+    log("Login.svelte","Status",txt);
+
     status = txt;
   }
 

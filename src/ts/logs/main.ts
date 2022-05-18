@@ -1,12 +1,12 @@
 import { get, writable } from "svelte/store";
 
-export function log(caller: string, title: string, message: string) {
+export function log(caller: string, category: string, message: string) {
   const timestamp = new Date().getTime();
   const log = get(systemLog);
 
   const data: LogEntry = {
     timestamp,
-    title,
+    category,
     caller,
     message,
   };
@@ -22,7 +22,7 @@ export const systemLog = writable<LogEntry[]>([]);
 
 export interface LogEntry {
   timestamp: number;
-  title: string;
+  category: string;
   caller: string;
   message: string;
 }

@@ -11,7 +11,7 @@ export async function login(auth?: Credentials): Promise<boolean> {
 
   log(
     "Login",
-    "Aanmelden",
+    "Aanmelding",
     `Bezig met aanmelden via ${auth ? "inloggegevens" : "opgeslagen gegevens"}`
   );
 
@@ -36,7 +36,7 @@ export async function login(auth?: Credentials): Promise<boolean> {
 export async function logout() {
   log(
     "Logout",
-    "Bezig met afmelden...",
+    "Afmelding",
     `${egTokenKey} verwijderen voor afmelding...`
   );
   isLoggedIn.set(false);

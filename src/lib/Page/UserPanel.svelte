@@ -6,12 +6,15 @@
   import { apiReq } from "../../ts/api/main";
   import { logout } from "../../ts/api/auth";
   import type { EggEntry } from "../../ts/api/egg";
+import { log } from "../../ts/logs/main";
 
   function close() {
     loadFromStore("list");
   }
 
   async function delAcc() {
+    log("UserPanel.svelte","GEVARENZONE",`${username} wordt verwijderd!`);
+
     const req = await apiReq("user/delete",{},localStorage.getItem(egTokenKey));
 
     if (req.valid) logout();
