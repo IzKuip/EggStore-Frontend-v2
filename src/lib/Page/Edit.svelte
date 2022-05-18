@@ -20,6 +20,8 @@ import { log } from "../../ts/logs/main";
   let registrar: string;
   let dateInput: any;
 
+  let processing = false;
+
   onMount(async () => {
     data = get(editData);
     registrar = data.registrar;
@@ -79,6 +81,7 @@ import { log } from "../../ts/logs/main";
   }
 
   async function del() {
+    processing = true;
     log("Edit.svelte","Verwijdering",`#${data.id} wordt verwijderd.`);
     await apiReq(
       `eggs/delete`,
@@ -90,24 +93,25 @@ import { log } from "../../ts/logs/main";
 
     setTimeout(() => {
       close();
+      processing = false;
     }, 100);
   }
 </script>
 
 <div class="list">
   <div class="header">
-    <button class="suggested" on:click={s}>
+    <button class="suggested" on:click={s} disabled={processing}>
       <span class="material-icons">save</span><span> Opslaan</span>
     </button>
-    <button on:click={back}>
+    <button on:click={back} disabled={processing}>
       <span class="material-icons">arrow_back_ios_new</span><span> Terug</span>
     </button>
-    <button on:click={del}>
+    <button class="danger" on:click={del} disabled={processing}>
       <span class="material-icons">delete</span><span> Verwijderen</span>
     </button>
   </div>
   <div class="content fullheight">
-    <p>Vul de benodigde informatie in en klik op Opslaan om te bevestigen.</p>
+    <p class="title">Vul de benodigde informatie in en klik op Opslaan om te bevestigen.</p>
     <table>
       <tr>
         <td>Datum: </td>

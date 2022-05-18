@@ -3,12 +3,6 @@ import { log } from "../logs/main";
 import { apiReq } from "./main";
 
 export async function login(auth?: Credentials): Promise<boolean> {
-  console.log(
-    `API: Auth: Login: logging in ${
-      auth ? "using provided authentication" : "from localStorage"
-    }`
-  );
-
   log(
     "Login",
     "Aanmelding",
@@ -25,10 +19,6 @@ export async function login(auth?: Credentials): Promise<boolean> {
     localStorage.setItem(egTokenKey, token);
     isLoggedIn.set(req.valid);
 
-    console.log(
-      `API: Auth: Login: Authentication ${req.valid ? "succeeded" : "failed!"}`
-    );
-
     return req.valid;
   } else return false;
 }
@@ -39,7 +29,9 @@ export async function logout() {
     "Afmelding",
     `${egTokenKey} verwijderen voor afmelding...`
   );
+
   isLoggedIn.set(false);
+  
   localStorage.removeItem(egTokenKey);
 }
 

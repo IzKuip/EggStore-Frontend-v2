@@ -14,8 +14,6 @@ export function log(caller: string, category: string, message: string) {
   log.push(data);
 
   systemLog.set(log);
-
-  console.log(get(systemLog))
 }
 
 export const systemLog = writable<LogEntry[]>([]);

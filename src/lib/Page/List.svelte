@@ -12,6 +12,8 @@
 import { logout } from "../../ts/api/auth";
 
   let eggList = [];
+  let element:HTMLDivElement;
+  let reloading = false;
   onMount(async () => {
     reload()
   });
@@ -21,6 +23,7 @@ import { logout } from "../../ts/api/auth";
   }
 
   async function reload() {
+    reloading = true;
     eggList = [];
     setTimeout(async () => {
       const req = await apiReq(
@@ -37,23 +40,35 @@ import { logout } from "../../ts/api/auth";
       eggList = req.data as [];
 
       eggCount.set(0);
+
+      setTimeout(() => {
+        reloading = false;  
+      }, 100);
+      
     }, 1000);
   }
 
   function count(data: EggEntry) {
     eggCount.set(get(eggCount) + parseInt(data.amount as string));
 
+    update()
+
     return "";
+  }
+
+  function update() {
+    if (element)
+      element.scrollTop = element.scrollHeight
   }
 </script>
 
 <div class="list">
   <div class="header">
-    <button class="suggested" on:click={create}>
+    <button class="suggested" on:click={create} disabled={reloading}>
       <span class="material-icons">add</span><span> Toevoegen</span>
     </button>
-    <button on:click={reload}>
-      <span class="material-icons">sync</span><span> Herladen</span>
+    <button on:click={reload} disabled={reloading}>
+      <span class="material-icons" class:reloading>sync</span><span> Herladen</span>
     </button>
   </div>
   <div class="row head">
@@ -61,7 +76,7 @@ import { logout } from "../../ts/api/auth";
     <span class="count">Aantal</span>
     <span class="person">Wie?</span>
   </div>
-  <div class="content">
+  <div class="content" bind:this={element}>
     {#each eggList as entry}
       {count(entry)}
       <Entry data={entry} />

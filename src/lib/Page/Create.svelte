@@ -15,6 +15,7 @@ import { log } from "../../ts/logs/main";
   let disableIncr: boolean = false;
   let registrar: string;
   let dateInput: any;
+  let processing = false;
 
   onMount(async () => {
     checkDisabledState();
@@ -32,6 +33,7 @@ import { log } from "../../ts/logs/main";
   }
 
   async function s() {
+    processing = true;
     log("Create.svelte","Opslaan","Wijzigingen worden opgeslagen...");
     if (registrar && dateInput && eggCount >= 0) {
 
@@ -46,6 +48,7 @@ import { log } from "../../ts/logs/main";
       );
 
       setTimeout(() => {
+        processing = false;
         close();
       }, 100);
     }
@@ -66,15 +69,15 @@ import { log } from "../../ts/logs/main";
 
 <div class="list">
   <div class="header">
-    <button class="suggested" on:click={s}>
+    <button class="suggested" on:click={s} disabled={processing}>
       <span class="material-icons">save</span><span> Opslaan</span>
     </button>
-    <button on:click={close}>
+    <button class="danger" on:click={close} disabled={processing}>
       <span class="material-icons">cancel</span><span> Annuleren</span>
     </button>
   </div>
   <div class="content fullheight">
-    <p>Vul de benodigde informatie in en klik op Opslaan om te bevestigen.</p>
+    <p class="title">Vul de benodigde informatie in en klik op Opslaan om te bevestigen.</p>
     <table>
       <tr>
         <td>Datum: </td>

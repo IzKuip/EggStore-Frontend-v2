@@ -12,6 +12,10 @@ button {
   transition: background-color 0.2s, opacity 0.2s;
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
 button:hover {
   background-color: #fff3;
 }

@@ -1,4 +1,3 @@
-import type { SvelteComponent } from "svelte/internal";
 import { writable } from "svelte/store";
 import type { EggEntry } from "./api/egg";
 import type { Page } from "./page/interfaces";
@@ -6,7 +5,7 @@ import type { Page } from "./page/interfaces";
 export const isLoggedIn = writable<boolean>(false);
 export const EggApiServ = `http://www.twihub.tk:9000/api`;
 export const appDstName = "Reggistry";
-export const appDstVers = [1,1,2];
+export const appDstVers = [2,1,3];
 export const egTokenKey = "eggToken";
 export const sideBarOpened = writable<boolean>(false);
 export const eggCount = writable<number>(0);
