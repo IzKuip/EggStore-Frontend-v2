@@ -9,7 +9,9 @@
 <div class="headerbar">
   <button on:click={() => {
       sideBarOpened.set(!get(sideBarOpened))
-  }} class="material-icons menubutt">menu</button>
+  }} class="material-icons menubutt">
+  {!$sideBarOpened?"menu":"close"}
+</button>
   <h3 class="eggHeader">
     <img src={logo} alt="Logo" class="logo"/>
     <span>{appDstName}</span>

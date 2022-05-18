@@ -20,9 +20,9 @@
   }
 
   function details() {
-      detailsData.set(data);
-      loadFromStore("details");
-      }
+    detailsData.set(data);
+    loadFromStore("details");
+  }
 </script>
 
 <div class="row" on:click={details}>

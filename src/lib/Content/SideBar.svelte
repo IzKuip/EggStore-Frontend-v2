@@ -21,6 +21,10 @@
   function account() {
     loadFromStore("userman");
   }
+
+  function iLog() {
+    loadFromStore("logs");
+  }
 </script>
 
 <div class="sidebar">
@@ -50,6 +54,10 @@
       <button class="small fullwidth" on:click={account}>
         <span class="material-icons button">person</span>
         <span>Account</span>
+      </button>
+      <button class="small fullwidth" on:click={iLog}>
+        <span class="material-icons button">list</span>
+        <span>{appDstName} Logboek</span>
       </button>
     </div>
   {/if}

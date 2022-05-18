@@ -32,8 +32,6 @@
   }
 
   function incr() {
-    console.log(dateInput, eggCount, registrar);
-
     if (eggCount < 6) eggCount++;
 
     checkDisabledState();
@@ -41,8 +39,6 @@
 
   async function s() {
     if (registrar && dateInput && eggCount >= 0) {
-      console.log("Saving...");
-
       await apiReq(
         `eggs/change`,
         {
@@ -54,8 +50,6 @@
         localStorage.getItem(egTokenKey)
       );
 
-      console.log("Saved.");
-
       setTimeout(() => {
         close();
       }, 100);
@@ -63,8 +57,6 @@
   }
 
   function decr() {
-    console.log(dateInput, eggCount, registrar);
-
     if (eggCount > 0) eggCount--;
 
     checkDisabledState();
@@ -87,8 +79,6 @@
       },
       localStorage.getItem(egTokenKey)
     );
-
-    console.log("Deleted.");
 
     setTimeout(() => {
       close();

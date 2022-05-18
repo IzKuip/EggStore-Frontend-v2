@@ -24,8 +24,7 @@
 
   onMount(async () => {
     data = get(detailsData);
-
-    console.log(data);
+    
     registrar = data.registrar;
     eggCount = parseInt(data.amount as string);
     dateInput = data.timestamp;

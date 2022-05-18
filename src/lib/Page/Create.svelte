@@ -8,6 +8,7 @@
   import { loadFromStore } from "../../ts/page/main";
 
   import logo from "../../assets/egg.png";
+import { log } from "../../ts/logs/main";
 
   let eggCount: number = 0;
   let disableDecr: boolean = false;
@@ -24,16 +25,15 @@
   }
 
   function incr() {
-    console.log(dateInput, eggCount, registrar);
-
+    log("Create.svelte","Aantal verandering","Incrementatie geselecteerd...");
     if (eggCount < 6) eggCount++;
 
     checkDisabledState();
   }
 
   async function s() {
+    log("Create.svelte","Opslaan","Wijzigingen worden opgeslagen...");
     if (registrar && dateInput && eggCount >= 0) {
-      console.log("Saving...");
 
       await apiReq(
         `eggs/register`,
@@ -45,8 +45,6 @@
         localStorage.getItem(egTokenKey)
       );
 
-      console.log("Saved.");
-
       setTimeout(() => {
         close();
       }, 100);
@@ -54,8 +52,7 @@
   }
 
   function decr() {
-    console.log(dateInput, eggCount, registrar);
-
+    log("Create.svelte","Aantal verandering","decrementatie geselecteerd...");
     if (eggCount > 0) eggCount--;
 
     checkDisabledState();

@@ -1,22 +1,19 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { appDstName, eggCount, egTokenKey } from "../../ts/env";
+  import { appDstName, eggCount, egTokenKey, loginStatus } from "../../ts/env";
 
   import { onMount } from "svelte";
 
   import "../../css/page/list.css";
   import Entry from "./list/Entry.svelte";
   import { loadFromStore, openPage } from "../../ts/page/main";
-  import type { EggEntry } from "src/ts/api/egg";
+  import type { EggEntry } from "../../ts/api/egg";
   import { get } from "svelte/store";
+import { logout } from "../../ts/api/auth";
 
   let eggList = [];
   onMount(async () => {
-    const req = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
-
-    eggList = req.data as [];
-
-    eggCount.set(0);
+    reload()
   });
 
   function create() {
@@ -31,6 +28,11 @@
         {},
         localStorage.getItem(egTokenKey)
       );
+
+      if (!req.valid) {
+        logout();
+        loginStatus.set([true,"Incorrecte sessie!"]);
+      }
 
       eggList = req.data as [];
 

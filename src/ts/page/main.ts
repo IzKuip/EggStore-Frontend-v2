@@ -1,8 +1,10 @@
 import { currentPage, sideBarOpened } from "../env";
+import { log } from "../logs/main";
 import type { Page } from "./interfaces";
 import { PageStore } from "./store";
 
 export function openPage(content:Page) {
+    log("openPage","Pagina geopend",`Pagina ${content.name} is geopend.`);
     currentPage.set(content);
 
     sideBarOpened.set(false);

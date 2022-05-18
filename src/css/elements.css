@@ -58,6 +58,20 @@ button.suggested:active {
   background-color: #0a0a;
 }
 
+button.danger {
+  background-color: rgba(255, 0, 0, 0.2);
+  border: #0002 1px solid;
+}
+
+button.danger:hover {
+  background-color: rgba(255, 0, 0, 0.333);
+}
+
+button.danger:active {
+  background-color: rgba(170, 0, 0, 0.667);
+  color:white;
+}
+
 button.small {
   padding:5px !important;
 }
