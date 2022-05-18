@@ -2,7 +2,6 @@
   import {
     appDstName,
     appDstVers,
-    currentPage,
     eggCount,
     egTokenKey,
     isLoggedIn,
@@ -28,20 +27,19 @@
     <div class="bottom">
       <h3>Eieren totaal: {$eggCount}</h3>
       <br />
-      <p>Versie {appDstVers.join(".")}</p>
-      <!-- svelte-ignore missing-declaration -->
+      <p>
+        Versie {appDstVers.join(".")}
+        <br />
+        Ontwikkeld vanaf 16 mei 2022.
+        <br /><br />
+      </p>
       <p class="user">
-        <span>Ingelogd als {username}</span>
+        <span>Ingelogd als {username}.</span>
       </p>
       <br />
-      <p class="page">
-        {#if $currentPage}
-          <span class="material-icons">{$currentPage.icon}</span>
-          <span>{$currentPage.name}</span>
-        {:else}
-          <span class="material-icons">web_asset_off</span>
-          <span>404</span>
-        {/if}
+      <p>
+        Incorrecte paginaweergave, werkt de registratie niet of algemene {appDstName} storing? Meld het zo snel
+        als mogelijk en het word verholpen.
       </p>
     </div>
   {/if}

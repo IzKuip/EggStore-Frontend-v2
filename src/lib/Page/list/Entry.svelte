@@ -24,7 +24,7 @@
 <div class="row">
     <span class="date">{dayjs(data.timestamp).format("DD-MM-YYYY")}</span>
     <span class="count">
-      {#each Array(6) as _}
+      {#each Array(eggCount) as _}
         <img src={logo} alt="Egg" class="egg" />
       {/each}
     </span>

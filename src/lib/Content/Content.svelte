@@ -9,7 +9,7 @@ import { loadFromStore } from "../../ts/page/main";
   })
 </script>
 
-<div class="content">
+<div class="pagecontent">
   {#if $currentPage}
     <svelte:component this={$currentPage.content} />
   {:else}

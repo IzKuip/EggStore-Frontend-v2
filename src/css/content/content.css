@@ -1,4 +1,4 @@
-div.content {
+div.pagecontent {
     position:fixed;
     top:50px;
     left:300px;
@@ -12,7 +12,7 @@ div.content {
 
 
 @media screen and (max-width: 900px) {
-    div.content {
+    div.pagecontent {
       left:100%;
       width:100%;
     }
