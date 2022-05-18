@@ -1,6 +1,6 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { editData, egTokenKey } from "../../ts/env";
+  import { editData, egTokenKey, maxEggs } from "../../ts/env";
 
   import { onMount } from "svelte";
 
@@ -11,6 +11,7 @@
   import type { EggEntry } from "../../ts/api/egg";
   import { get } from "svelte/store";
   import { log } from "../../ts/logs/main";
+import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
 
   let data: EggEntry;
 
@@ -30,6 +31,29 @@
     checkDisabledState();
   });
 
+  function confirmDel() {
+    showConfirmation({
+      title:"Item Verwijderen",
+      message:`Ben je er zeker van dat je item #${data.id} wil verwijderen? Deze wijziging kan niet worden teruggedraaid.`,
+      okButton: {
+        capt:"Verwijder",
+        event:async () => {
+          await del()
+        },
+        icon:"delete",
+        className:"danger"
+      },
+      cancelButton: {
+        capt:"Annuleren",
+        event:() => {
+          hideConfirmation();
+        },
+        icon:"cancel",
+        className:""
+      }
+    })
+  }
+
   function close() {
     loadFromStore("list");
   }
@@ -37,7 +61,7 @@
   function incr() {
     log("Edit.svelte","Aantal","Incrementatie geselecteerd...");
 
-    if (eggCount < 6) eggCount++;
+    if (eggCount < maxEggs) eggCount++;
 
     checkDisabledState();
   }
@@ -106,7 +130,7 @@
     <button on:click={back} disabled={processing}>
       <span class="material-icons">arrow_back_ios_new</span><span> Terug</span>
     </button>
-    <button class="danger" on:click={del} disabled={processing}>
+    <button class="danger" on:click={confirmDel} disabled={processing}>
       <span class="material-icons">delete</span><span> Verwijderen</span>
     </button>
   </div>

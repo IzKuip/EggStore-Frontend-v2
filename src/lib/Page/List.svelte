@@ -25,8 +25,10 @@ import { logout } from "../../ts/api/auth";
   }
 
   async function reload() {
+    eggCount.set(0);
     reloading = true;
     eggList = [];
+    
     setTimeout(async () => {
       const req = await apiReq(
         "eggs/get",

@@ -1,3 +1,4 @@
+import { hideConfirmation } from "../confirmation/main";
 import { currentPage, sideBarOpened } from "../env";
 import { log } from "../logs/main";
 import type { Page } from "./interfaces";
@@ -8,6 +9,7 @@ export function openPage(content:Page) {
     currentPage.set(content);
 
     sideBarOpened.set(false);
+    hideConfirmation();
 }
 
 export function loadFromStore(page:string) {

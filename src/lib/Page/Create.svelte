@@ -1,6 +1,6 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { egTokenKey } from "../../ts/env";
+  import { egTokenKey, maxEggs } from "../../ts/env";
 
   import { onMount } from "svelte";
 
@@ -8,7 +8,7 @@
   import { loadFromStore } from "../../ts/page/main";
 
   import logo from "../../assets/egg.png";
-import { log } from "../../ts/logs/main";
+  import { log } from "../../ts/logs/main";
 
   let eggCount: number = 0;
   let disableDecr: boolean = false;
@@ -26,17 +26,16 @@ import { log } from "../../ts/logs/main";
   }
 
   function incr() {
-    log("Create.svelte","Aantal","Incrementatie geselecteerd...");
-    if (eggCount < 6) eggCount++;
+    log("Create.svelte", "Aantal", "Incrementatie geselecteerd...");
+    if (eggCount < maxEggs) eggCount++;
 
     checkDisabledState();
   }
 
   async function s() {
     processing = true;
-    log("Create.svelte","Opslaan","Wijzigingen worden opgeslagen...");
+    log("Create.svelte", "Opslaan", "Wijzigingen worden opgeslagen...");
     if (registrar && dateInput && eggCount >= 0) {
-
       await apiReq(
         `eggs/register`,
         {
@@ -55,7 +54,7 @@ import { log } from "../../ts/logs/main";
   }
 
   function decr() {
-    log("Create.svelte","Aantal","decrementatie geselecteerd...");
+    log("Create.svelte", "Aantal", "decrementatie geselecteerd...");
     if (eggCount > 0) eggCount--;
 
     checkDisabledState();
@@ -77,7 +76,9 @@ import { log } from "../../ts/logs/main";
     </button>
   </div>
   <div class="content fullheight">
-    <p class="title">Vul de benodigde informatie in en klik op Opslaan om te bevestigen.</p>
+    <p class="title">
+      Vul de benodigde informatie in en klik op Opslaan om te bevestigen.
+    </p>
     <table>
       <tr>
         <td>Datum: </td>

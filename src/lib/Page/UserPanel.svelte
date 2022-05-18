@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { loadFromStore } from "../../ts/page/main";
+  import { loadFromStore, openPage } from "../../ts/page/main";
   import "../../css/page/userman.css";
   import { appDstName, egTokenKey, isLoggedIn, loginStatus } from "../../ts/env";
   import { onMount } from "svelte";
@@ -7,9 +7,33 @@
   import { logout } from "../../ts/api/auth";
   import type { EggEntry } from "../../ts/api/egg";
 import { log } from "../../ts/logs/main";
+import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
 
   function close() {
     loadFromStore("list");
+  }
+
+  function confirmAccDel() {
+    showConfirmation({
+      title:"Account Verwijderen",
+      message:"Weet je zeker dat je je account wil verwijderen? Er is geen terugweg mogelijk.",
+      okButton: {
+        capt:"Verwijder",
+        event:async () => {
+          await delAcc()
+        },
+        icon:"delete",
+        className:"danger"
+      },
+      cancelButton: {
+        capt:"Ga terug",
+        event:() => {
+          hideConfirmation();
+        },
+        icon:"arrow_back_ios_new",
+        className:"suggested"
+      }
+    })
   }
 
   async function delAcc() {
@@ -77,9 +101,9 @@ import { log } from "../../ts/logs/main";
       Gevarenzone
     </h3>
     <p>Hier kan je kiezen om je account te verwijderen.
-      Dit zal geen wijzigingen maken aan de {appDstName} lijst zelf, maar wel aan je account data. Onder anderen betekent dit dat je niet meer kan inloggen met dit account, dusdanig kan je niet meer bij de lijst zonder een nieuw account aan te maken.
+      Dit zal geen wijzigingen maken aan de {appDstName} lijst zelf, maar wel aan je account data. Onder anderen betekent dit dat je niet meer kan inloggen met dit account, ook zal je niet langer bij de lijst kunnen zonder een nieuw account aan te maken.
     </p>
-    <button class="danger" on:click={delAcc}>
+    <button class="danger" on:click={confirmAccDel}>
       <span class="material-icons button">warning</span>
       <span>Account verwijderen</span>
     </button>
