@@ -10,7 +10,7 @@
   import logo from "../../assets/egg.png";
   import type { EggEntry } from "../../ts/api/egg";
   import { get } from "svelte/store";
-import { log } from "../../ts/logs/main";
+  import { log } from "../../ts/logs/main";
 
   let data: EggEntry;
 

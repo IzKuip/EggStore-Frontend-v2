@@ -15,7 +15,9 @@ import { logout } from "../../ts/api/auth";
   let element:HTMLDivElement;
   let reloading = false;
   onMount(async () => {
-    reload()
+    await reload();
+
+    update();
   });
 
   function create() {

@@ -12,6 +12,8 @@ import Item from "./log/Item.svelte";
 
   onMount(async () => {
       render = true;
+
+      update();
   });
 
   function close() {
