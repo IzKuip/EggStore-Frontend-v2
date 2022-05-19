@@ -1,6 +1,6 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { appDstName, eggCount, egTokenKey, loginStatus } from "../../ts/env";
+  import { appDstName, eggCount, egTokenKey, itmCount, loginStatus } from "../../ts/env";
 
   import { onMount } from "svelte";
 
@@ -26,6 +26,7 @@ import { logout } from "../../ts/api/auth";
 
   async function reload() {
     eggCount.set(0);
+    itmCount.set(0);
     reloading = true;
     eggList = [];
     
@@ -54,6 +55,7 @@ import { logout } from "../../ts/api/auth";
 
   function count(data: EggEntry) {
     eggCount.set(get(eggCount) + parseInt(data.amount as string));
+    itmCount.set(get(itmCount) + 1);
 
     update()
 
@@ -74,6 +76,7 @@ import { logout } from "../../ts/api/auth";
     <button on:click={reload} disabled={reloading}>
       <span class="material-icons" class:reloading>sync</span><span> Herladen</span>
     </button>
+    <button class="flat">{$itmCount} items</button>
   </div>
   <div class="row head">
     <span class="date">Datum</span>
