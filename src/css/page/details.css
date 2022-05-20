@@ -47,7 +47,7 @@ div.list div.content .options {
   width: 75px;
 }
 
-div.list div.content table tr td {
+div.list div.content table:not(.compact) tr td {
   height: 39.33px !important;
 }
 

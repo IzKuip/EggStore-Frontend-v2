@@ -9,6 +9,8 @@
   import "../../css/content/sidebar.css";
   import logo from "../../assets/egg.png";
   import { loadFromStore } from "../../ts/page/main";
+  import { SideBarPageLinks } from "../../ts/page/pagelink";
+  import PageLink from "./SideBar/PageLink.svelte";
 
   let username: string = "niemand";
 
@@ -51,14 +53,9 @@
         storing? Meld het zo snel als mogelijk en het word verholpen.
       </p>
       <br />
-      <button class="small fullwidth" on:click={account}>
-        <span class="material-icons button">person</span>
-        <span>Account</span>
-      </button>
-      <button class="small fullwidth" on:click={iLog}>
-        <span class="material-icons button">list</span>
-        <span>{appDstName} Logboek</span>
-      </button>
+      {#each SideBarPageLinks as link}
+        <PageLink data={link} />
+      {/each}
     </div>
   {/if}
 </div>

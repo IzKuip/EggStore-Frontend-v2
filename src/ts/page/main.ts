@@ -1,5 +1,5 @@
 import { hideConfirmation } from "../confirmation/main";
-import { currentPage, sideBarOpened } from "../env";
+import { currentPage, currentPageId, sideBarOpened } from "../env";
 import { log } from "../logs/main";
 import type { Page } from "./interfaces";
 import { PageStore } from "./store";
@@ -15,5 +15,7 @@ export function openPage(content:Page) {
 export function loadFromStore(page:string) {
     if (PageStore.has(page)) {
         openPage(PageStore.get(page));
+
+        currentPageId.set(page);
     } else openPage(PageStore.get("list"));
 }

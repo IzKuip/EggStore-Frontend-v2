@@ -61,6 +61,17 @@ div.sidebar p.page {
   box-sizing: border-box;
 }
 
+div.sidebar button.pagelink {
+  border-left: #0000 5px solid;
+  border-radius: 0;
+  padding:10px 6px !important;
+}
+
+div.sidebar button.pagelink.activated {
+  color:rgb(82, 82, 231);
+  border-left:rgb(82, 82, 231) 5px solid;
+}
+
 div.sidebar p.page * {
   vertical-align: middle;
 }

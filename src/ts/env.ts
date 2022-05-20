@@ -13,6 +13,7 @@ export const eggCount = writable<number>(0);
 export const itmCount = writable<number>(0);
 export const maxEggs = 6;
 export const currentPage = writable<Page>();
+export const currentPageId = writable<string>();
 export const editData = writable<EggEntry>();
 export const detailsData = writable<EggEntry>();
 export const loginStatus = writable<[boolean,string]>([false,""]);

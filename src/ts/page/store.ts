@@ -5,6 +5,7 @@ import Edit from "../../lib/Page/Edit.svelte";
 import List from "../../lib/Page/List.svelte";
 import type { Page } from "./interfaces";
 import LogSvelte from "../../lib/Page/Log.svelte";
+import StatisticsSvelte from "../../lib/Page/Statistics.svelte";
 
 export const PageStore = new Map<string,Page>([
     ["list",{
@@ -36,5 +37,10 @@ export const PageStore = new Map<string,Page>([
         name:"Logboek",
         icon:"list",
         content:LogSvelte
+    }],
+    ["stats",{
+        name:"Statistieken",
+        icon:"dashboard",
+        content:StatisticsSvelte
     }]
 ]);
