@@ -18,11 +18,9 @@
   import dayjs from "dayjs";
   import logo from "../../assets/egg.png";
   import { roundDecimals } from "../../ts/util";
-  import Entry from "./list/Entry.svelte";
 
   let firstDate: string | number = "";
   let eggList = [];
-  let element: HTMLDivElement;
   let reloading = false;
   let username: string = "niemand";
   let usrEggCount = 0;
@@ -31,6 +29,7 @@
   let levelCounts: number[] = [];
   let entryCount = 0;
   let perRegistrarEggs = {};
+  let perRegistrarEntries = {};
   let dataSize = 0;
 
   onMount(async () => {
@@ -121,6 +120,12 @@
         } else {
           perRegistrarEggs[registrar] += parseInt(list[i].amount as string);
         }
+
+        if (!perRegistrarEntries[registrar]) {
+          perRegistrarEntries[registrar] = 1;
+        } else {
+          perRegistrarEntries[registrar] += 1;
+        }
       }
 
       levelCounts[parseInt(list[i].amount as string) - 1] += 1;
@@ -136,9 +141,7 @@
       <span class="material-icons">cancel</span><span> Sluiten</span>
     </button>
     <button on:click={reload} disabled={reloading}>
-      <span class="material-icons" class:reloading>sync</span><span>
-        Herladen</span
-      >
+      <span class="material-icons" class:reloading>sync</span><span>Herladen</span>
     </button>
   </div>
   <div class="content fullheight">
@@ -160,7 +163,9 @@
               {/each}&nbsp;&nbsp;</td
             >
             <td>{levelCounts[x]}</td>
-            <td class="dynamic">{roundDecimals((100 / entryCount) * levelCounts[x], 2)}%</td>
+            <td class="dynamic"
+              >{roundDecimals((100 / entryCount) * levelCounts[x], 2)}%</td
+            >
           </tr>
         {/each}
         <tr>
@@ -169,7 +174,7 @@
           <td class="dynamic">100.00%</td>
         </tr>
       </table>
-      <h4>Aantal registraties per gedetecteerd persoon:</h4>
+      <h4>Aantal eieren per persoon:</h4>
       <table class="compact stats">
         {#each Object.keys(perRegistrarEggs).sort() as registrar}
           <tr>
@@ -189,9 +194,32 @@
           <td class="dynamic">100.00%</td>
         </tr>
       </table>
+      <h4>Aantal registraties per persoon:</h4>
+      <table class="compact stats">
+        {#each Object.keys(perRegistrarEntries).sort() as registrar}
+          <tr>
+            <td>{registrar}&nbsp;&nbsp;</td>
+            <td>{perRegistrarEntries[registrar]}&nbsp;&nbsp;</td>
+            <td class="dynamic">
+              {roundDecimals(
+                (100 / entryCount) * perRegistrarEntries[registrar],
+                2
+              )}%
+            </td>
+          </tr>
+        {/each}
+        <tr>
+          <td><b>Totaal</b></td>
+          <td>{entryCount} registraties</td>
+          <td class="dynamic">100.00%</td>
+        </tr>
+      </table>
       <br />
       <p>
-        Totale bestandsgrootte lijst database:<br />{roundDecimals(dataSize/1024,2)}KB ({dataSize} bytes)
+        Totale bestandsgrootte lijst database:<br />{roundDecimals(
+          dataSize / 1024,
+          2
+        )}KB ({dataSize} bytes)
       </p>
     {:else}
       <p class="loading">

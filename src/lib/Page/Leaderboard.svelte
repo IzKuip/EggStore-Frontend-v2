@@ -85,25 +85,23 @@
 <div class="list">
   <div class="header">
     <button on:click={close} class="suggested" disabled={reloading}>
-      <span class="material-icons">cancel</span>
-      <span>Sluiten</span>
+      <span class="material-icons">cancel</span><span>Sluiten</span>
     </button>
     <button on:click={reload} disabled={reloading}>
-      <span class="material-icons" class:reloading>sync</span>
-      <span>Herladen</span>
+      <span class="material-icons" class:reloading>sync</span><span>Herladen</span>
     </button>
   </div>
   <div class="content">
     {#if leaderboardData.length && !reloading}
       <table class="compact stats">
         <tr class="header">
-          <td>Prijs</td>
+          <td class="dynamic">Prijs&nbsp;&nbsp;</td>
           <td>Naam</td>
-          <td>Aantal Eieren</td>
+          <td class="dynamic">Eieren</td>
         </tr>
         {#each leaderboardData as participant}
           <tr>
-            <td>
+            <td class="dynamic">
               <span
                 class="material-icons prize{leaderboardData.indexOf(
                   participant
@@ -111,7 +109,7 @@
               >
             </td>
             <td>{participant.registrar}</td>
-            <td>{participant.eggs}</td>
+            <td class="dynamic">{participant.eggs}</td>
           </tr>
         {/each}
       </table>
