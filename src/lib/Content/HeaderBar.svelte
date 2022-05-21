@@ -42,7 +42,7 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
   </h3>
   <div class="right">
     <div class="pagedisp">
-      <span class="material-icons">{$currentPage.icon}</span>
+      <span class="material-icons">{#if $currentPage}{$currentPage.icon}{:else}preview{/if}</span>
       <span>{#if $currentPage}{$currentPage.name}{:else}Onbekend{/if}</span>
     </div>
     <button class="material-icons" on:click={confirmLogout}>logout</button>
