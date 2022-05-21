@@ -6,6 +6,7 @@ import List from "../../lib/Page/List.svelte";
 import type { Page } from "./interfaces";
 import LogSvelte from "../../lib/Page/Log.svelte";
 import StatisticsSvelte from "../../lib/Page/Statistics.svelte";
+import LeaderboardSvelte from "../../lib/Page/Leaderboard.svelte";
 
 export const PageStore = new Map<string,Page>([
     ["list",{
@@ -30,17 +31,22 @@ export const PageStore = new Map<string,Page>([
     }],
     ["userman",{
         name:"Account",
-        icon:"user",
+        icon:"person",
         content:UserPanel
     }],
     ["logs",{
         name:"Logboek",
-        icon:"list",
+        icon:"report",
         content:LogSvelte
     }],
     ["stats",{
         name:"Statistieken",
-        icon:"dashboard",
+        icon:"analytics",
         content:StatisticsSvelte
+    }],
+    ["leaderboard",{
+        name:"Scorebord",
+        icon:"leaderboard",
+        content:LeaderboardSvelte
     }]
 ]);

@@ -24,6 +24,34 @@ div.list div.header {
   border-radius: 7.5px;
 }
 
+div.list table.compact.stats tr td:not(.dynamic) {
+  min-width:110px;
+}
+
+div.list table.compact.stats tr.header * {
+  font-weight: bold;
+}
+
+div.list table.compact.stats tr td span.material-icons[class*="prize"] {
+  color:#555
+}
+
+div.list table.compact.stats tr td span.material-icons.prize1 {
+  color:#ffd700;
+}
+
+div.list table.compact.stats tr td span.material-icons.prize2 {
+  color:#cc6633
+}
+
+div.list table.compact.stats tr td span.material-icons.prize3 {
+  color:silver;
+}
+
+div.list table.compact.stats tr td span.material-icons.prize4 {
+  color:#B87333
+}
+
 div.list div.header button {
   padding: 5px;
 }
@@ -112,6 +140,10 @@ div.list div.row.head * {
 
 div.list div.row.head .person {
   margin-left: -11px;
+}
+
+div.list h3.big {
+  font-size: 23px;
 }
 
 @media screen and (max-width: 900px) {
