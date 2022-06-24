@@ -1,13 +1,13 @@
 button,
 input {
   border-radius: 4px;
-  color: #333;
+  color: var(--button-input-fg);
   box-sizing: border-box;
 }
 
 button {
-  background-color: #0001;
-  border: #0001 1px solid;
+  background-color: var(--button-bg);
+  border: var(--border-clr) 1px solid;
   padding: 10px 20px;
   transition: background-color 0.2s, opacity 0.2s;
 }
@@ -17,17 +17,17 @@ button:disabled {
 }
 
 button:hover {
-  background-color: #fff3;
+  background-color: var(--button-hover-bg);
 }
 
 button:active {
-  background-color: #0003;
+  background-color: var(--button-active-bg);
 }
 
 input {
-  border: #0004 1px solid;
+  border: var(--border-clr) 1px solid;
   padding: 10px 5px;
-  background-color: #fff;
+  background-color: var(--input-bg);
 }
 
 .fullwidth {
@@ -40,26 +40,26 @@ button.flat {
 }
 
 button.flat:hover {
-  background-color: #0001;
+  background-color: var(--button-flat-hover-bg);
   border: none;
 }
 
 button.flat:active {
-  background-color: #0002;
+  background-color: var(--button-flat-active-bg);
   border: none;
 }
 
 button.suggested {
-  background-color: #0f03;
+  background-color: var(--button-suggested-bg);
   border: #0002 1px solid;
 }
 
 button.suggested:hover {
-  background-color: #0f05;
+  background-color: var(--button-suggested-hover-bg);
 }
 
 button.suggested:active {
-  background-color: #0a0a;
+  background-color: var(--button-suggested-active-bg);
 }
 
 button.danger {
@@ -73,15 +73,15 @@ button.danger:hover {
 
 button.danger:active {
   background-color: rgba(170, 0, 0, 0.667);
-  color:white;
+  color: white;
 }
 
 button.small {
-  padding:5px !important;
+  padding: 5px !important;
 }
 
 button.fullwidth {
-  width:100%;
+  width: 100%;
   box-sizing: border-box;
   text-align: left;
 }
@@ -91,8 +91,8 @@ button * {
 }
 
 button span.material-icons.button {
-  font-size:18px;
-  margin-right:5px
+  font-size: 18px;
+  margin-right: 5px;
 }
 
 input::-webkit-outer-spin-button,
@@ -106,7 +106,7 @@ input[type="number"] {
 }
 
 button.material-icons {
-  padding:0;
-  border:none;
+  padding: 0;
+  border: none;
   background-color: transparent;
 }

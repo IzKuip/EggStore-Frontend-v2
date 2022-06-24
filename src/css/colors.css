@@ -1,0 +1,51 @@
+:root {
+    --general-fg: #000;
+    --bg-clrd: #e4ffe4;
+    --bg-clrd-alt: #bcecbc;
+    --border-clr: #0003;
+    --login-holder-bg: #fff9;
+    --login-status-bg: #0000000a;
+    --login-status-fg: #000a;
+    --button-input-fg: #333;
+    --button-bg: #0001;
+    --button-hover-bg: #fff3;
+    --button-active-bg: #0003;
+    --input-bg: #fff;
+    --button-flat-hover-bg: #0001;
+    --button-flat-active-bg: #0002;
+    --button-suggested-bg: #0f03;
+    --button-suggested-hover-bg: #0f05;
+    --button-suggested-active-bg: #0a0a;
+    --list-bg: #fffa;
+    --header-bg: #eee;
+    --header-pagelist-bg: #00000017;
+    --confirmation-blur-bg: #0002;
+    --sidebar-bg: #fefefe;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --general-fg: #fff;
+        --bg-clrd: #131313;
+        --bg-clrd-alt: #2b2b2b;
+        --border-clr: #fff3;
+        --login-holder-bg: #0003;
+        --login-status-bg: #6868680a;
+        --login-status-fg: #fff;
+        --button-input-fg: #fff;
+        --button-bg: #333;
+        --button-hover-bg: #fff3;
+        --button-active-bg: #0003;
+        --input-bg: #222;
+        --button-flat-hover-bg: #fff1;
+        --button-flat-active-bg: #fff2;
+        --button-suggested-bg: #00ff0080;
+        --button-suggested-hover-bg: #00ff009f;
+        --button-suggested-active-bg: #00b60080;
+        --list-bg: #000a;
+        --header-bg: #111;
+        --header-pagelist-bg: #d3d3d317;
+        --confirmation-blur-bg: #0007;
+        --sidebar-bg: #161616;
+    }
+}

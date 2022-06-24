@@ -17,15 +17,14 @@ div.login {
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #e4ffe4;
+  background-color: var(--bg-clrd);
 }
 
 div.login div.holder {
-
   width: 290px;
   height: 345px;
-  background-color: #fff9;
-  border: #0003 1px solid;
+  background-color: var(--login-holder-bg);
+  border: var(--border-clr) 1px solid;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -52,6 +51,7 @@ div.login div.holder input[type="password"] {
 div.login div.holder h1 {
   font-weight: 100;
   margin-top:10px;
+  color:var(--general-fg);
 }
 
 div.login div.center div.status {
@@ -61,9 +61,9 @@ div.login div.center div.status {
   width:290px;
   height:40px;
   padding:12px;
-  background-color: #0000000a;
+  background-color: var(--login-status-bg);
   box-sizing: border-box;
-  color:#000a;
+  color:var(--login-status-fg);
   text-align: center;
   border-radius: 5px;
 }
