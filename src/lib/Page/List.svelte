@@ -1,6 +1,12 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { appDstName, eggCount, egTokenKey, itmCount, loginStatus } from "../../ts/env";
+  import {
+    appDstName,
+    eggCount,
+    egTokenKey,
+    itmCount,
+    loginStatus,
+  } from "../../ts/env";
 
   import { onMount } from "svelte";
 
@@ -9,10 +15,10 @@
   import { loadFromStore, openPage } from "../../ts/page/main";
   import type { EggEntry } from "../../ts/api/egg";
   import { get } from "svelte/store";
-import { logout } from "../../ts/api/auth";
+  import { logout } from "../../ts/api/auth";
 
   let eggList = [];
-  let element:HTMLDivElement;
+  let element: HTMLDivElement;
   let reloading = false;
   onMount(async () => {
     await reload();
@@ -29,7 +35,7 @@ import { logout } from "../../ts/api/auth";
     itmCount.set(0);
     reloading = true;
     eggList = [];
-    
+
     setTimeout(async () => {
       const req = await apiReq(
         "eggs/get",
@@ -38,8 +44,8 @@ import { logout } from "../../ts/api/auth";
       );
 
       if (!req.valid) {
-        logout();
-        loginStatus.set([true,"Incorrecte sessie!"]);
+        /* logout(); */
+        loginStatus.set([true, "Incorrecte sessie!"]);
       }
 
       eggList = req.data as [];
@@ -47,9 +53,8 @@ import { logout } from "../../ts/api/auth";
       eggCount.set(0);
 
       setTimeout(() => {
-        reloading = false;  
+        reloading = false;
       }, 100);
-      
     }, 1000);
   }
 
@@ -57,14 +62,13 @@ import { logout } from "../../ts/api/auth";
     eggCount.set(get(eggCount) + parseInt(data.amount as string));
     itmCount.set(get(itmCount) + 1);
 
-    update()
+    update();
 
     return "";
   }
 
   function update() {
-    if (element)
-      element.scrollTop = element.scrollHeight
+    if (element) element.scrollTop = element.scrollHeight;
   }
 </script>
 
@@ -74,7 +78,9 @@ import { logout } from "../../ts/api/auth";
       <span class="material-icons">add</span><span> Toevoegen</span>
     </button>
     <button on:click={reload} disabled={reloading}>
-      <span class="material-icons" class:reloading>sync</span><span> Herladen</span>
+      <span class="material-icons" class:reloading>sync</span><span>
+        Herladen</span
+      >
     </button>
     <button class="flat">{$itmCount} items</button>
   </div>
@@ -84,14 +90,26 @@ import { logout } from "../../ts/api/auth";
     <span class="person">Wie?</span>
   </div>
   <div class="content" bind:this={element}>
-    {#each eggList as entry}
-      {count(entry)}
-      <Entry data={entry} />
-    {/each}
-    {#if !eggList.length}
+    {#if eggList && !reloading}
+      {#each eggList as entry}
+        {count(entry)}
+        <Entry data={entry} />
+      {/each}
+      {#if !eggList.length}
+      
+      <p class="loading">
+        <span class="material-icons">cancel</span><span
+          >De reggistry is leeg.
+        </span>
+      </p>{/if}
+    {:else}
+    
     <p class="loading">
-      <span class="material-icons">hourglass_empty</span><span>Verbinden met {appDstName} server
+      <span class="material-icons">hourglass_empty</span><span
+        >Verbinden met {appDstName} server
       </span>
-    </p>{/if}
+    </p>
+      {/if}
+
   </div>
 </div>

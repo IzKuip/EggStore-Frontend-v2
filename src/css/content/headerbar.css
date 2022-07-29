@@ -6,8 +6,8 @@ div.headerbar {
     height:50px;
     box-sizing: border-box;
     padding:12.5px;
-    background-color: var(--header-bg);
-    box-shadow: 0 2px 10px 0 var(--border-clr);
+    background-color: var(--bg-clrd);
+    border-bottom: var(--border-clr) 1px solid;
     color:var(--general-fg)
 }
 

@@ -4,6 +4,7 @@
   import Content from "./lib/Content.svelte";
   import Login from "./lib/Login.svelte";
   import { isLoggedIn, sideBarOpened } from "./ts/env";
+import Confirmation from "./lib/Content/Confirmation.svelte";
 </script>
 
 <div class="app" class:nosidebar={!$sideBarOpened}>
@@ -12,4 +13,5 @@
   {:else}
     <Login />
   {/if}
+  <Confirmation/>
 </div>

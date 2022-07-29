@@ -5,7 +5,7 @@ div.pagecontent {
     width:calc(100% - 300px);
     height:calc(100% - 50px);
     box-sizing: border-box;
-    background-color: var(--bg-clrd);
+    background-color: var(--colored-bg);
     transition:left 0.3s, width 0.3s;
     padding:10px;
 }

@@ -51,7 +51,7 @@
       );
 
       if (!req.valid) {
-        logout();
+        /* logout(); */
         loginStatus.set([true, "Incorrecte sessie!"]);
       }
 
@@ -95,7 +95,7 @@
     const eggs = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
 
     if (!eggs.valid) {
-      logout();
+      /* logout(); */
 
       loginStatus.set([true, "Incorrecte sessie!"]);
     }

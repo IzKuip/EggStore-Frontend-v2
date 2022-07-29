@@ -1,6 +1,6 @@
 :root {
     --general-fg: #000;
-    --bg-clrd: #e4ffe4;
+    --bg-clrd: #fff;
     --bg-clrd-alt: #bcecbc;
     --border-clr: #0003;
     --login-holder-bg: #fff9;
@@ -16,17 +16,18 @@
     --button-suggested-bg: #0f03;
     --button-suggested-hover-bg: #0f05;
     --button-suggested-active-bg: #0a0a;
-    --list-bg: #fffa;
+    --list-bg: #fff;
     --header-bg: #eee;
-    --header-pagelist-bg: #00000017;
+    --header-pagelist-bg: #0000000b;
     --confirmation-blur-bg: #0002;
     --sidebar-bg: #fefefe;
+    --colored-bg: #e4ffe4;
 }
 
 @media screen and (prefers-color-scheme: dark) {
     :root {
         --general-fg: #fff;
-        --bg-clrd: #131313;
+        --bg-clrd: #222;
         --bg-clrd-alt: #2b2b2b;
         --border-clr: #fff3;
         --login-holder-bg: #0003;
@@ -42,10 +43,11 @@
         --button-suggested-bg: #00ff0080;
         --button-suggested-hover-bg: #00ff009f;
         --button-suggested-active-bg: #00b60080;
-        --list-bg: #000a;
+        --list-bg: #222;
         --header-bg: #111;
-        --header-pagelist-bg: #d3d3d317;
+        --header-pagelist-bg: #fff1;
         --confirmation-blur-bg: #0007;
         --sidebar-bg: #161616;
+        --colored-bg: #222;
     }
 }

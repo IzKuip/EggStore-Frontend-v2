@@ -9,6 +9,7 @@
 
   import logo from "../../assets/egg.png";
   import { log } from "../../ts/logs/main";
+  import { showConfirmation } from "../../ts/confirmation/main";
 
   let eggCount: number = 0;
   let disableDecr: boolean = false;
@@ -36,7 +37,7 @@
     processing = true;
     log("Create.svelte", "Opslaan", "Wijzigingen worden opgeslagen...");
     if (registrar && dateInput && eggCount >= 0) {
-      await apiReq(
+      const req = await apiReq(
         `eggs/register`,
         {
           registrar,
@@ -45,6 +46,24 @@
         },
         localStorage.getItem(egTokenKey)
       );
+
+      if (!req.valid) {
+        showConfirmation({
+          title: "Fout",
+          message:
+            "Er is een fout opgetreden tijdens het opslaan van de gegevens!",
+          okButton: {
+            capt: "Sluiten",
+            icon: "cancel",
+            event: () => {},
+          },
+          cancelButton: {
+            capt: "Probeer opnieuw",
+            icon: "sync",
+            event: s,
+          },
+        });
+      }
 
       setTimeout(() => {
         processing = false;
@@ -68,7 +87,7 @@
 
 <div class="list">
   <div class="header">
-    <button class="suggested" on:click={s} disabled={processing}>
+    <button class="suggested" on:click={s} disabled={processing || (!dateInput || !registrar)}>
       <span class="material-icons">save</span><span> Opslaan</span>
     </button>
     <button class="danger" on:click={close} disabled={processing}>

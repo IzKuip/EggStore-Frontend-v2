@@ -1,6 +1,8 @@
 import { EggApiServ } from "../env";
 import { log } from "../logs/main";
 import type { Credentials } from "./auth";
+import fetch from "../fetch";
+import { showConfirmation } from "../confirmation/main";
 
 export async function apiReq(
   path: string,
@@ -10,7 +12,7 @@ export async function apiReq(
   valid: boolean;
   data: object;
 }> {
-  log("APIReq","Aanvraag",`Er is een server aanvraag gemaakt naar ${path}.`);
+  log("APIReq", "Aanvraag", `Er is een server aanvraag gemaakt naar ${path}.`);
   const init: RequestInit = {
     headers: {
       Authorization: `Basic ${
@@ -28,12 +30,31 @@ export async function apiReq(
     paramStr += `${key}=${params[key]}&`;
   }
 
-  const response = await (
-    await fetch(`${EggApiServ}/${path}${paramStr}`, auth ? init : {})
-  ).json();
+  try {
+    const response = await (
+      await fetch(`${EggApiServ}/${path}${paramStr}`, auth ? init : {}, 3000)
+    ).json();
 
-  return {
-    valid: response.valid,
-    data: response.response,
-  };
+    return {
+      valid: response.valid,
+      data: response.response,
+    };
+  } catch {
+    showConfirmation({
+      title: "Verbindingsfout",
+      message:
+        "Er kon geen verbinding worden gemaakt met de Reggistry. Probeer het later opnieuw.",
+      okButton: {
+        capt: "Sluiten",
+        icon: "close",
+        event: () => {
+        },
+      },
+    });
+
+    return {
+      valid: false,
+      data: undefined,
+    };
+  }
 }

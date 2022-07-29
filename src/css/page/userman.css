@@ -17,7 +17,7 @@ div.list div.content {
 
 div.list div.header {
   height: 50px;
-  background-color: #e4ffe4;
+  background-color: var(--colored-bg);
   padding: 10px;
   box-sizing: border-box;
   border: #0002 1px solid;

@@ -6,7 +6,8 @@ div.sidebar {
   height: calc(100% - 50px);
   box-sizing: border-box;
   padding: 0;
-  background-color: var(--sidebar-bg);
+  background-color: var(--bg-clrd);
+  border-right: var(--border-clr) 1px solid;
   transition:width 0.3s;
   overflow: hidden;
 }
@@ -33,7 +34,8 @@ div.sidebar h3 {
 div.sidebar div.top {
   height:160px;
   width:100%;
-  background-color: var(--bg-clrd-alt);
+  background-color: var(--bg-clrd);
+  border-bottom: var(--border-clr) 1px solid;
   box-sizing: border-box;
   padding:20px;
   text-align: center;
@@ -47,31 +49,20 @@ div.sidebar div.top h2 {
 
 div.sidebar div.bottom {
   height:calc(100% - 160px);
-  background-color: var(--sidebar-bg);
   box-sizing: border-box;
   padding:20px;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
   overflow-y:auto;
   color:var(--general-fg)
 }
 
-div.sidebar p.page {
-  padding:10px;
-  width:100%;
-  border-radius: 7.5px;
-  background-color: #9595950f;
-  box-sizing: border-box;
-}
-
 div.sidebar button.pagelink {
-  border-left: #0000 5px solid;
-  border-radius: 0;
-  padding:10px 6px !important;
+  border-radius: 5px;
+  padding:10px 10px !important;
 }
 
 div.sidebar button.pagelink.activated {
-  color:rgb(82, 82, 231);
-  border-left:rgb(82, 82, 231) 5px solid;
+  background-color: var(--button-bg);
+  font-weight: bold;
 }
 
 div.sidebar p.page * {

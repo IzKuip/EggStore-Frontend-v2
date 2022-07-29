@@ -37,14 +37,16 @@
       <h3 class="title">{data.title}</h3>
       <p class="message">{data.message}</p>
 
-      <button on:click={cancel} class="small {data.cancelButton.className}">
-        {#if data.cancelButton.icon}
-          <span class="material-icons button">
-            {data.cancelButton.icon}
-          </span>
-        {/if}
-        <span>{data.cancelButton.capt}</span>
-      </button>
+      {#if data.cancelButton}
+        <button on:click={cancel} class="small {data.cancelButton.className}">
+          {#if data.cancelButton.icon}
+            <span class="material-icons button">
+              {data.cancelButton.icon}
+            </span>
+          {/if}
+          <span>{data.cancelButton.capt}</span>
+        </button>
+      {/if}
       <button on:click={ok} class="small {data.okButton.className}">
         {#if data.okButton.icon}
           <span class="material-icons button">

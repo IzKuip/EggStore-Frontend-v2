@@ -124,7 +124,7 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
 
 <div class="list">
   <div class="header">
-    <button class="suggested" on:click={s} disabled={processing}>
+    <button class="suggested" on:click={s} disabled={processing || (!dateInput || !registrar)}>
       <span class="material-icons">save</span><span> Opslaan</span>
     </button>
     <button on:click={back} disabled={processing}>

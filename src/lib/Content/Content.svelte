@@ -15,5 +15,4 @@ import { showConfirmation } from "../../ts/confirmation/main";
   {#if $currentPage}
     <svelte:component this={$currentPage.content} />
   {/if}
-  <Confirmation/>
 </div>

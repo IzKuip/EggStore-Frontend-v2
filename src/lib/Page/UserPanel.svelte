@@ -58,7 +58,7 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
     const eggs = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
 
     if (!eggs.valid) {
-      logout();
+      /* logout(); */
 
       loginStatus.set([true, "Incorrecte sessie!"]);
     }

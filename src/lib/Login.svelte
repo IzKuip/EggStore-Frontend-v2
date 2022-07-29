@@ -25,7 +25,7 @@ import { log } from "../ts/logs/main";
       await login({ username, password });
 
       if (!get(isLoggedIn)) {
-        setStatus("Inloggegevens incorrect!");
+        setStatus("Inloggen mislukt.");
       }
     } else {
       setStatus("er zijn lege velden!");

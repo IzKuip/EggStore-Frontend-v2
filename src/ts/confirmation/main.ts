@@ -12,7 +12,7 @@ export interface Confirmation {
     title:string;
     message?:string;
     okButton:ConfirmationButton;
-    cancelButton:ConfirmationButton;
+    cancelButton?:ConfirmationButton;
 }
 
 export interface ConfirmationButton {
