@@ -42,41 +42,44 @@
     reloading = true;
     eggList = [];
     entryCount = 0;
+    const req = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
 
-    setTimeout(async () => {
-      const req = await apiReq(
-        "eggs/get",
-        {},
-        localStorage.getItem(egTokenKey)
-      );
+    if (!req.valid) {
+      /* logout(); */
+      loginStatus.set([true, "Incorrecte sessie!"]);
+    }
 
-      if (!req.valid) {
-        /* logout(); */
-        loginStatus.set([true, "Incorrecte sessie!"]);
-      }
+    const eggs = req.data as EggEntry[];
 
-      const eggs = req.data as EggEntry[];
+    dataSize = JSON.stringify(req.data).length;
 
-      dataSize = JSON.stringify(req.data).length;
+    const list = [];
+    const data = req.data;
 
-      eggList = req.data as [];
+    for (let i = 0; i < Object.keys(data).length; i++) {
+      list.push(data[Object.keys(data)[i]]);
+    }
 
-      entryCount = eggList.length;
+    list.sort(function (a, b) {
+      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+    });
 
-      firstDate = (eggs[0] as EggEntry).timestamp;
+    eggList = list;
 
-      for (let i = 0; i < eggs.length; i++) {
-        eggCount.set(get(eggCount) + parseInt(eggs[i].amount as string));
-      }
+    entryCount = eggList.length;
+    firstDate = (list[0] as EggEntry).timestamp;
 
-      await updateUserEggs();
+    for (let i = 0; i < list.length; i++) {
+      eggCount.set(get(eggCount) + parseInt(list[i].amount as string));
+    }
 
-      setTimeout(() => {
-        reloading = false;
-      }, 100);
+    await updateUserEggs();
 
-      percentage = roundDecimals((100 / $eggCount) * usrEggCount, 2);
-    }, 1000);
+    setTimeout(() => {
+      reloading = false;
+    }, 100);
+
+    percentage = roundDecimals((100 / $eggCount) * usrEggCount, 2);
   }
 
   function close() {
@@ -100,7 +103,12 @@
       loginStatus.set([true, "Incorrecte sessie!"]);
     }
 
-    const list = eggs.data as EggEntry[];
+    const list = [];
+    const data = eggs.data;
+
+    for (let i = 0; i < Object.keys(data).length; i++) {
+      list.push(data[Object.keys(data)[i]]);
+    }
 
     for (let i = 0; i < list.length; i++) {
       const registrars = list[i].registrar.toLowerCase().split(",");
@@ -130,8 +138,6 @@
 
       levelCounts[parseInt(list[i].amount as string) - 1] += 1;
     }
-
-    console.log(usrEggCount);
   }
 </script>
 
@@ -141,7 +147,9 @@
       <span class="material-icons">cancel</span><span> Sluiten</span>
     </button>
     <button on:click={reload} disabled={reloading}>
-      <span class="material-icons" class:reloading>sync</span><span>Herladen</span>
+      <span class="material-icons" class:reloading>sync</span><span
+        >Herladen</span
+      >
     </button>
   </div>
   <div class="content fullheight">

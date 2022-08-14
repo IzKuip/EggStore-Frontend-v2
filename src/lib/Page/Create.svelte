@@ -40,9 +40,13 @@
       const req = await apiReq(
         `eggs/register`,
         {
-          registrar,
-          timestamp: dateInput,
-          amount: eggCount,
+          data: btoa(
+            JSON.stringify({
+              registrar,
+              timestamp: dateInput,
+              amount: eggCount,
+            })
+          ),
         },
         localStorage.getItem(egTokenKey)
       );
@@ -63,6 +67,8 @@
             event: s,
           },
         });
+
+        return;
       }
 
       setTimeout(() => {

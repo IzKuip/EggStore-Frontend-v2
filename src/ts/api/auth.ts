@@ -16,7 +16,7 @@ export async function login(auth?: Credentials): Promise<boolean> {
 
   if (token) {
     try {
-      const req = await apiReq("auth/check", {}, token);
+      const req = await apiReq("api/auth/check", {}, token);
 
       if (req.valid) {
         localStorage.setItem(egTokenKey, token);

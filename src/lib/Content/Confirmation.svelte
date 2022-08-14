@@ -9,10 +9,6 @@
   let show = false;
   let data: Confirmation = null;
 
-  onMount(() => {
-    console.log(show, data);
-  });
-
   confirmationData.subscribe((v) => {
     show = v[0];
     data = v[1];

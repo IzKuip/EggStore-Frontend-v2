@@ -11,7 +11,10 @@
   import type { EggEntry } from "../../ts/api/egg";
   import { get } from "svelte/store";
   import { log } from "../../ts/logs/main";
-import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
+  import {
+    hideConfirmation,
+    showConfirmation,
+  } from "../../ts/confirmation/main";
 
   let data: EggEntry;
 
@@ -33,25 +36,25 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
 
   function confirmDel() {
     showConfirmation({
-      title:"Item Verwijderen",
-      message:`Ben je er zeker van dat je item #${data.id} wil verwijderen? Deze wijziging kan niet worden teruggedraaid.`,
+      title: "Item Verwijderen",
+      message: `Ben je er zeker van dat je item #${data.id} wil verwijderen? Deze wijziging kan niet worden teruggedraaid.`,
       okButton: {
-        capt:"Verwijder",
-        event:async () => {
-          await del()
+        capt: "Verwijder",
+        event: async () => {
+          await del();
         },
-        icon:"delete",
-        className:"danger"
+        icon: "delete",
+        className: "danger",
       },
       cancelButton: {
-        capt:"Annuleren",
-        event:() => {
+        capt: "Annuleren",
+        event: () => {
           hideConfirmation();
         },
-        icon:"cancel",
-        className:""
-      }
-    })
+        icon: "cancel",
+        className: "",
+      },
+    });
   }
 
   function close() {
@@ -59,7 +62,7 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
   }
 
   function incr() {
-    log("Edit.svelte","Aantal","Incrementatie geselecteerd...");
+    log("Edit.svelte", "Aantal", "Incrementatie geselecteerd...");
 
     if (eggCount < maxEggs) eggCount++;
 
@@ -67,16 +70,20 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
   }
 
   async function s() {
-    log("Edit.svelte","Opslaan","Wijzigingen worden opgeslagen...");
+    log("Edit.svelte", "Opslaan", "Wijzigingen worden opgeslagen...");
 
     if (registrar && dateInput && eggCount >= 0) {
       await apiReq(
-        `eggs/change`,
+        `eggs/edit`,
         {
           id: data.id,
-          registrar,
-          timestamp: dateInput,
-          amount: eggCount,
+          data: btoa(
+            JSON.stringify({
+              registrar,
+              timestamp: dateInput,
+              amount: eggCount,
+            })
+          ),
         },
         localStorage.getItem(egTokenKey)
       );
@@ -88,7 +95,7 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
   }
 
   function decr() {
-    log("Edit.svelte","Aantal","Decrementatie geselecteerd...");
+    log("Edit.svelte", "Aantal", "Decrementatie geselecteerd...");
 
     if (eggCount > 0) eggCount--;
 
@@ -106,7 +113,7 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
 
   async function del() {
     processing = true;
-    log("Edit.svelte","Verwijdering",`#${data.id} wordt verwijderd.`);
+    log("Edit.svelte", "Verwijdering", `#${data.id} wordt verwijderd.`);
     await apiReq(
       `eggs/delete`,
       {
@@ -124,7 +131,11 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
 
 <div class="list">
   <div class="header">
-    <button class="suggested" on:click={s} disabled={processing || (!dateInput || !registrar)}>
+    <button
+      class="suggested"
+      on:click={s}
+      disabled={processing || !dateInput || !registrar}
+    >
       <span class="material-icons">save</span><span> Opslaan</span>
     </button>
     <button on:click={back} disabled={processing}>
@@ -135,7 +146,9 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
     </button>
   </div>
   <div class="content fullheight">
-    <p class="title">Vul de benodigde informatie in en klik op Opslaan om te bevestigen.</p>
+    <p class="title">
+      Vul de benodigde informatie in en klik op Opslaan om te bevestigen.
+    </p>
     <table>
       <tr>
         <td>Datum: </td>

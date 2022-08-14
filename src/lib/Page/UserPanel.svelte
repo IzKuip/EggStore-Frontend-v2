@@ -39,7 +39,7 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
   async function delAcc() {
     log("UserPanel.svelte","GEVARENZONE",`${username} wordt verwijderd!`);
 
-    const req = await apiReq("user/delete",{},localStorage.getItem(egTokenKey));
+    const req = await apiReq("api/user/delete",{},localStorage.getItem(egTokenKey));
 
     if (req.valid) logout();
   }
@@ -63,7 +63,13 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
       loginStatus.set([true, "Incorrecte sessie!"]);
     }
 
-    const list = eggs.data as EggEntry[];
+    let list = [];
+
+    const data = eggs.data;
+
+    for (let i = 0; i < Object.keys(data).length; i++) {
+      list.push(data[Object.keys(data)[i]]);
+    }
 
     for (let i = 0; i < list.length; i++) {
       const registrars = list[i].registrar.toLowerCase().split(",");

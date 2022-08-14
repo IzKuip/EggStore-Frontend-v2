@@ -37,7 +37,7 @@ export async function apiReq(
 
     return {
       valid: response.valid,
-      data: response.response,
+      data: response.data,
     };
   } catch {
     showConfirmation({

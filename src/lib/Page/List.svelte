@@ -12,10 +12,9 @@
 
   import "../../css/page/list.css";
   import Entry from "./list/Entry.svelte";
-  import { loadFromStore, openPage } from "../../ts/page/main";
+  import { loadFromStore } from "../../ts/page/main";
   import type { EggEntry } from "../../ts/api/egg";
   import { get } from "svelte/store";
-  import { logout } from "../../ts/api/auth";
 
   let eggList = [];
   let element: HTMLDivElement;
@@ -36,26 +35,28 @@
     reloading = true;
     eggList = [];
 
-    setTimeout(async () => {
-      const req = await apiReq(
-        "eggs/get",
-        {},
-        localStorage.getItem(egTokenKey)
-      );
+    const req = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
 
-      if (!req.valid) {
-        /* logout(); */
-        loginStatus.set([true, "Incorrecte sessie!"]);
-      }
+    if (!req.valid) {
+      /* logout(); */
+      loginStatus.set([true, "Incorrecte sessie!"]);
+    }
 
-      eggList = req.data as [];
+    const data = req.data;
 
-      eggCount.set(0);
+    for (let i = 0; i < Object.keys(data).length; i++) {
+      eggList.push(data[Object.keys(data)[i]]);
+    }
 
-      setTimeout(() => {
-        reloading = false;
-      }, 100);
-    }, 1000);
+    eggList.sort(function (a, b) {
+      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+    });
+
+    eggCount.set(0);
+
+    setTimeout(() => {
+      reloading = false;
+    }, 100);
   }
 
   function count(data: EggEntry) {
@@ -96,20 +97,17 @@
         <Entry data={entry} />
       {/each}
       {#if !eggList.length}
-      
-      <p class="loading">
-        <span class="material-icons">cancel</span><span
-          >De reggistry is leeg.
-        </span>
-      </p>{/if}
+        <p class="loading">
+          <span class="material-icons">cancel</span><span
+            >De reggistry is leeg.
+          </span>
+        </p>{/if}
     {:else}
-    
-    <p class="loading">
-      <span class="material-icons">hourglass_empty</span><span
-        >Verbinden met {appDstName} server
-      </span>
-    </p>
-      {/if}
-
+      <p class="loading">
+        <span class="material-icons">hourglass_empty</span><span
+          >Verbinden met {appDstName} server
+        </span>
+      </p>
+    {/if}
   </div>
 </div>

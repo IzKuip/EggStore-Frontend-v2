@@ -21,7 +21,17 @@
     leaderboardData = [];
 
     const req = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
-    const eggList = req.data as EggEntry[];
+   
+    const eggList = [];
+    const data = req.data;
+
+    for (let i = 0; i < Object.keys(data).length; i++) {
+      eggList.push(data[Object.keys(data)[i]]);
+    }
+
+    eggList.sort(function (a, b) {
+      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+    });
 
     for (let i = 0; i < eggList.length; i++) {
       const registrars = eggList[i].registrar.split(",").join("").split(" ");
@@ -47,8 +57,6 @@
     }
 
     leaderboardData = leaderboardData.sort((a, b) => b.eggs - a.eggs);
-
-    console.log(leaderboardData);
 
     setTimeout(() => {
       reloading = false;
