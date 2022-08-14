@@ -97,19 +97,15 @@ import { hideConfirmation, showConfirmation } from "../../ts/confirmation/main";
 
   <div class="content fullheight">
     <h2>Account Beheer</h2>
-    <p>
-      Vanuit hier kan je de instellingen van je account wijzigen. Let op:
-      wijzigingen die je maakt kunnen niet ongedaan worden gemaakt.
-    </p><br>
     <p>Ingelogd als {username}.</p>
-    <p>{username} heeft {eggCount} eieren geraapt.</p><br>
+    <p>{username} heeft {eggCount} eieren geraapt.</p>
     <h3>
-      Gevarenzone
+      Account verwijderen
     </h3>
     <p>Hier kan je kiezen om je account te verwijderen.
-      Dit zal geen wijzigingen maken aan de {appDstName} lijst zelf, maar wel aan je account data. Onder anderen betekent dit dat je niet meer kan inloggen met dit account, ook zal je niet langer bij de lijst kunnen zonder een nieuw account aan te maken.
+      Dit zal niks veranderen in de {appDstName} lijst<br>zelf, maar wel aan je account data. Onder anderen betekent dit dat je niet meer kan inloggen<br>met dit account, ook zal je niet langer bij de lijst kunnen zonder een nieuw account<br>aan te maken.
     </p>
-    <button class="danger" on:click={confirmAccDel}>
+    <button class="danger small" on:click={confirmAccDel}>
       <span class="material-icons button">warning</span>
       <span>Account verwijderen</span>
     </button>

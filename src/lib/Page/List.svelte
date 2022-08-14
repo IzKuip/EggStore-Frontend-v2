@@ -90,7 +90,7 @@
     <span class="count">Aantal</span>
     <span class="person">Wie?</span>
   </div>
-  <div class="content" bind:this={element}>
+  <div class="content withrow" bind:this={element}>
     {#if eggList && !reloading}
       {#each eggList as entry}
         {count(entry)}

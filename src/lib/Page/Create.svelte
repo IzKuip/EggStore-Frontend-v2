@@ -4,7 +4,6 @@
 
   import { onMount } from "svelte";
 
-  import "../../css/page/create.css";
   import { loadFromStore } from "../../ts/page/main";
 
   import logo from "../../assets/egg.png";

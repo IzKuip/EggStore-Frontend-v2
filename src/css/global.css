@@ -1,13 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("./colors.css");
 
 * {
-    user-select: none;
-    outline: none !important;
-    font-family: 'Inter', sans-serif;
+  user-select: none;
+  outline: none !important;
+  font-family: "Inter", sans-serif;
 }
 
-h1,h2,h3,h4,h5 {
-    font-weight: bold;
+body *:not(.material-icons, h1, h2, h3, h4, h5) {
+  font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: bold;
 }

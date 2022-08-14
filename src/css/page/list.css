@@ -7,13 +7,17 @@ div.list {
   box-sizing: border-box;
   border: var(--border-clr) 1px solid;
   border-radius: 7.5px;
-  color:var(--general-fg)
+  color: var(--general-fg);
 }
 
 div.list div.content {
-  height: calc(100% - 100px);
+  height: calc(100% - 55px);
   overflow-y: scroll;
   margin-top: 5px;
+}
+
+div.list div.content.withrow {
+  height: calc(100% - 92px);
 }
 
 div.list div.header {
@@ -26,7 +30,7 @@ div.list div.header {
 }
 
 div.list table.compact.stats tr td:not(.dynamic) {
-  min-width:110px;
+  min-width: 110px;
 }
 
 div.list table.compact.stats tr.header * {
@@ -34,23 +38,23 @@ div.list table.compact.stats tr.header * {
 }
 
 div.list table.compact.stats tr td span.material-icons[class*="prize"] {
-  color:#555
+  color: #555;
 }
 
 div.list table.compact.stats tr td span.material-icons.prize1 {
-  color:#ffd700;
+  color: #ffd700;
 }
 
 div.list table.compact.stats tr td span.material-icons.prize2 {
-  color:#cc6633
+  color: #cc6633;
 }
 
 div.list table.compact.stats tr td span.material-icons.prize3 {
-  color:silver;
+  color: silver;
 }
 
 div.list table.compact.stats tr td span.material-icons.prize4 {
-  color:#B87333
+  color: #b87333;
 }
 
 div.list div.header button {
@@ -65,8 +69,8 @@ div.list div.header button * {
 div.list div.header button span.material-icons {
   font-size: 18px;
   margin-right: 2.5px;
-  width:18px !important;
-  height:18px !important;
+  width: 18px !important;
+  height: 18px !important;
 }
 
 div.list div.header button span.reloading {
@@ -99,11 +103,11 @@ div.list div.content .count img.egg {
   height: 15px;
   vertical-align: middle;
 }
-
+/* 
 * {
   vertical-align: middle;
 }
-
+ */
 div.list div.content .count button.suggested:disabled {
   opacity: 0.3;
 }
@@ -162,9 +166,54 @@ div.list h3.big {
 
 @keyframes spin {
   from {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
   to {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
+}
+
+div.list div.content table tr td {
+  height: 24px !important;
+}
+
+div.list div.content table tr td img {
+  height: 15px;
+  vertical-align: middle;
+}
+
+div.list div.content table tr td * {
+  vertical-align: middle;
+}
+
+div.list table.compact.stats tr td:not(.dynamic) {
+  min-width: 110px;
+}
+
+div.list table.compact.stats tr.header * {
+  font-weight: bold;
+}
+
+div.list table.compact.stats tr td span.material-icons[class*="prize"] {
+  color: #555;
+}
+
+div.list table.compact.stats tr td span.material-icons.prize1 {
+  color: #ffd700;
+}
+
+div.list table.compact.stats tr td span.material-icons.prize2 {
+  color: #cc6633;
+}
+
+div.list table.compact.stats tr td span.material-icons.prize3 {
+  color: silver;
+}
+
+div.list table.compact.stats tr td span.material-icons.prize4 {
+  color: #b87333;
+}
+
+div.list div.content table:not(.compact) tr td {
+  height: 39.33px !important;
 }

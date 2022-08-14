@@ -8,8 +8,8 @@ import type { LogEntry } from "../../../ts/logs/main";
 </script>
 
 <div class="logentry">
-  <div class="timestamp">{dayjs(data.timestamp).format("HH:mm:ss.SSS")}</div>
+<!--   <div class="timestamp">{dayjs(data.timestamp).format("HH:mm:ss.SSS")}</div>
   <div class="module">{data.caller}</div>
-  <div class="category">{data.category}</div>
-  <div class="message">{data.message}</div>
+  <div class="category">{data.category}</div> -->
+  <div class="message">{@html data.message}</div>
 </div>

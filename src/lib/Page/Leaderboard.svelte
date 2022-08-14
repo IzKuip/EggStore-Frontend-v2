@@ -2,7 +2,7 @@
   import type { EggEntry } from "../../ts/api/egg";
 
   import { apiReq } from "../../ts/api/main";
-  import { egTokenKey } from "../../ts/env";
+  import { appDstName, egTokenKey } from "../../ts/env";
 
   import "../../css/page/list.css";
   import { loadFromStore } from "../../ts/page/main";
@@ -21,7 +21,7 @@
     leaderboardData = [];
 
     const req = await apiReq("eggs/get", {}, localStorage.getItem(egTokenKey));
-   
+
     const eggList = [];
     const data = req.data;
 
@@ -96,7 +96,9 @@
       <span class="material-icons">cancel</span><span>Sluiten</span>
     </button>
     <button on:click={reload} disabled={reloading}>
-      <span class="material-icons" class:reloading>sync</span><span>Herladen</span>
+      <span class="material-icons" class:reloading>sync</span><span
+        >Herladen</span
+      >
     </button>
   </div>
   <div class="content">
@@ -125,6 +127,12 @@
         {leaderboardData[0].registrar} is aan de leiding met {leaderboardData[1]
           .registrar} als tweede en {leaderboardData[2].registrar} als derde.
       </h4>
+    {:else}
+      <p class="loading">
+        <span class="material-icons">hourglass_empty</span><span
+          >Verbinden met {appDstName} server
+        </span>
+      </p>
     {/if}
   </div>
 </div>

@@ -1,19 +1,18 @@
 <script lang="ts">
-  import "../../css/page/details.css";
   import "../../css/elements.css";
   import { onMount } from "svelte";
   import { loadFromStore } from "../../ts/page/main";
   import { systemLog } from "../../ts/logs/main";
-import Item from "./log/Item.svelte";
+  import Item from "./log/Item.svelte";
 
   let render = false;
 
-  let element:HTMLDivElement;
+  let element: HTMLDivElement;
 
   onMount(async () => {
-      render = true;
+    render = true;
 
-      update();
+    update();
   });
 
   function close() {
@@ -25,8 +24,7 @@ import Item from "./log/Item.svelte";
   }
 
   function update() {
-    if (element)
-    element.scrollTop = element.scrollHeight;
+    if (element) element.scrollTop = element.scrollHeight;
 
     return "";
   }
@@ -42,12 +40,11 @@ import Item from "./log/Item.svelte";
         <span class="material-icons">delete</span><span> Maak leeg</span>
       </button>
     </div>
-    <div class="content fullheight" bind:this={element}>
-        {#each $systemLog as entry}
-        <Item data={entry}/>
+    <div class="content" bind:this={element}>
+      {#each $systemLog as entry}
+        <Item data={entry} />
         {update()}
-
-        {/each}
+      {/each}
     </div>
   </div>
 {/if}

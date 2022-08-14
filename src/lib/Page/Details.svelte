@@ -3,8 +3,6 @@
   import { detailsData, editData, egTokenKey } from "../../ts/env";
 
   import { onMount } from "svelte";
-
-  import "../../css/page/details.css";
   import { loadFromStore } from "../../ts/page/main";
 
   import logo from "../../assets/egg.png";

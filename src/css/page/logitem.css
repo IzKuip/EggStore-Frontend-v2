@@ -4,17 +4,18 @@ div.logentry {
     width:calc(100% - 10px);
     margin:5px;
     border-bottom: #0003 1px solid;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    padding-bottom: 10px;
 }
 
-div.logentry * {
-    padding:5px;
+div.logentry code {
+    padding:2.5px 5px;
     border-radius: 5px;
-    background-color: #00000013;
+    background-color: var(--button-bg);
     display: inline-block;
-    margin-bottom: 10px;
-    height:30px;
+    margin-bottom: 0px;
     box-sizing: border-box;
+    margin:0 2px;
 }
 
 div.logentry div.category {

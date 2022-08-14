@@ -12,7 +12,7 @@ export async function apiReq(
   valid: boolean;
   data: object;
 }> {
-  log("APIReq", "Aanvraag", `Er is een server aanvraag gemaakt naar ${path}.`);
+  log("APIReq", "Aanvraag", `Er is een server aanvraag gemaakt naar <code>${path}</code>.`);
   const init: RequestInit = {
     headers: {
       Authorization: `Basic ${
