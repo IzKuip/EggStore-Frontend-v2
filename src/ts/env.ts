@@ -4,7 +4,7 @@ import type { Confirmation } from "./confirmation/main";
 import type { Page } from "./page/interfaces";
 
 export const isLoggedIn = writable<boolean>(false);
-export const EggApiServ = `https://eggsapi.twiserver.nl/api`;
+export const EggApiServ = `https://eggsapi.twiserver.nl`;
 export const appDstName = "Reggistry";
 export const appDstVers = [2,2,1];
 export const egTokenKey = "eggToken";
