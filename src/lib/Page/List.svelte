@@ -49,7 +49,7 @@
     }
 
     eggList.sort(function (a, b) {
-      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+      return new Date(a.timestamp).getTime() + new Date(b.timestamp).getTime();
     });
 
     eggCount.set(0);
