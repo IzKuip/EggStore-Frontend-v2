@@ -8,7 +8,7 @@ div.login div.center {
   -moz-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   text-align: center;
-  margin-top:-50px;
+  margin-top: -50px;
 }
 
 div.login {
@@ -28,8 +28,16 @@ div.login div.holder {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  padding-top:50px;
+  padding-top: 50px;
   box-sizing: border-box;
+}
+
+div.login div.holder input {
+  padding: 10px 15px;
+}
+
+div.login div.holder button.flat {
+  margin-top: 10px;
 }
 
 div.login div.holder input,
@@ -38,6 +46,7 @@ div.login div.holder button {
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 5px;
+  border: none;
 }
 div.login div.center img.logo {
   height: 100px;
@@ -49,21 +58,21 @@ div.login div.holder input[type="password"] {
 }
 
 div.login div.holder h1 {
-  font-weight: 100;
-  margin-top:10px;
-  color:var(--general-fg);
+  /*   font-weight: 100; */
+  margin-top: 10px;
+  color: var(--general-fg);
 }
 
 div.login div.center div.status {
-  position:absolute;
-  bottom:-50px;
-  left:0;
-  width:290px;
-  height:40px;
-  padding:12px;
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 290px;
+  height: 40px;
+  padding: 12px;
   background-color: var(--login-status-bg);
   box-sizing: border-box;
-  color:var(--login-status-fg);
+  color: var(--login-status-fg);
   text-align: center;
   border-radius: 5px;
 }
