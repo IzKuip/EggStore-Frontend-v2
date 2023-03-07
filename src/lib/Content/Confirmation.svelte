@@ -25,32 +25,40 @@
   }
 </script>
 
-{#if show}
-  <div class="confirmation">
-    <div class="shade" />
+<div class="confirmation" class:show>
+  <div class="shade" />
 
-    <div class="body">
-      <h3 class="title">{data.title}</h3>
-      <p class="message">{data.message}</p>
-
-      {#if data.cancelButton}
-        <button on:click={cancel} class="small {data.cancelButton.className}">
-          {#if data.cancelButton.icon}
-            <span class="material-icons button">
-              {data.cancelButton.icon}
-            </span>
+  <div class="body" class:show>
+    {#if show}
+      <div class="context">
+        <h3 class="title">{data.title}</h3>
+        <p class="message">{data.message}</p>
+      </div>
+      <div class="actions">
+        <div>
+          {#if data.cancelButton}
+            <button
+              on:click={cancel}
+              class="small {data.cancelButton.className}"
+            >
+              {#if data.cancelButton.icon}
+                <span class="material-icons button">
+                  {data.cancelButton.icon}
+                </span>
+              {/if}
+              <span>{data.cancelButton.capt}</span>
+            </button>
           {/if}
-          <span>{data.cancelButton.capt}</span>
-        </button>
-      {/if}
-      <button on:click={ok} class="small {data.okButton.className}">
-        {#if data.okButton.icon}
-          <span class="material-icons button">
-            {data.okButton.icon}
-          </span>
-        {/if}
-        <span>{data.okButton.capt}</span>
-      </button>
-    </div>
+          <button on:click={ok} class="small {data.okButton.className}">
+            {#if data.okButton.icon}
+              <span class="material-icons button">
+                {data.okButton.icon}
+              </span>
+            {/if}
+            <span>{data.okButton.capt}</span>
+          </button>
+        </div>
+      </div>
+    {/if}
   </div>
-{/if}
+</div>

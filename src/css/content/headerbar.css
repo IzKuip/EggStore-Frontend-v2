@@ -1,61 +1,69 @@
 div.headerbar {
-    position: fixed;
-    top:0px;
-    left:0px;
-    width:100%;
-    height:50px;
-    box-sizing: border-box;
-    padding:12.5px;
-    background-color: var(--bg-clrd);
-    border-bottom: var(--border-clr) 1px solid;
-    color:var(--general-fg)
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 12.5px;
+  background-color: var(--bg-clrd);
+  border-bottom: var(--border-clr) 1px solid;
+  color: var(--general-fg);
 }
 
 div.headerbar * {
-    vertical-align: middle;
-    margin: 0;
+  vertical-align: middle;
+  margin: 0;
 }
 
 div.headerbar img.logo {
-    height:25px;
+  height: 25px;
+}
+
+div.headerbar span.material-icons {
+  font-size: 19px;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 div.headerbar .eggHeader {
-    display:inline-block;
+  display: inline-block;
 }
 
 div.headerbar div.right {
-    position:absolute;
-    display: inline-block;
-    right:20px;
-    text-align: right;
+  position: absolute;
+  display: inline-block;
+  right: 20px;
+  text-align: right;
 }
 
 div.headerbar div.right div.pagedisp {
-    display:inline;
-    margin-right: 10px;
-    padding:5px;
-    background-color: var(--header-pagelist-bg);
-    padding: 6px;
-    border-radius: 5px;
+  display: inline;
+  margin-right: 15px;
+  line-height: 25px;
+  border-radius: 5px;
+}
+
+div.headerbar div.right button.material-icons.logout {
+  font-size: 20px;
 }
 
 div.headerbar div.right div.pagedisp * {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 div.headerbar div.right div.pagedisp span.material-icons {
-    font-size: 18px;
-    margin-right: 2px;
+  font-size: 18px;
+  margin-right: 2px;
 }
 
 div.headerbar button.menubutt {
-    margin-right: 5px;
-    font-size: 20px;
+  margin-right: 5px;
+  font-size: 20px;
 }
 
 @media screen and (min-width: 900px) {
-    div.headerbar button.menubutt {
-        display: none;
-    }
+  div.headerbar button.menubutt {
+    display: none;
+  }
 }

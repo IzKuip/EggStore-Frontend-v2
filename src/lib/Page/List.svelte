@@ -5,6 +5,7 @@
     eggCount,
     egTokenKey,
     itmCount,
+    LOCKED,
     loginStatus,
   } from "../../ts/env";
 
@@ -75,7 +76,7 @@
 
 <div class="list">
   <div class="header">
-    <button class="suggested" on:click={create} disabled={reloading}>
+    <button class="suggested" on:click={create} disabled={reloading || LOCKED}>
       <span class="material-icons">add</span><span> Toevoegen</span>
     </button>
     <button on:click={reload} disabled={reloading}>

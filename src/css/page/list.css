@@ -114,9 +114,10 @@ div.list div.content .count button.suggested:disabled {
 
 div.list div.row {
   width: 100%;
-  padding: 5px 0px;
-  padding-bottom: 10px;
+  padding: 5px 10px;
   border-bottom: 1px var(--border-clr) solid;
+  box-sizing: border-box;
+  line-height: 25px;
 }
 div.list div.row span {
   display: inline-block;
@@ -136,7 +137,7 @@ div.list div.row .person {
 }
 
 div.list div.row.head {
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 div.list div.row.head * {

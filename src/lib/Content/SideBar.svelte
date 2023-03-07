@@ -8,7 +8,6 @@
   } from "../../ts/env";
   import "../../css/content/sidebar.css";
   import logo from "../../assets/egg.png";
-  import { loadFromStore } from "../../ts/page/main";
   import { SideBarPageLinks } from "../../ts/page/pagelink";
   import PageLink from "./SideBar/PageLink.svelte";
 
@@ -19,14 +18,6 @@
       username = atob(localStorage.getItem(egTokenKey)).split(":")[0];
     }
   });
-
-  function account() {
-    loadFromStore("userman");
-  }
-
-  function iLog() {
-    loadFromStore("logs");
-  }
 </script>
 
 <div class="sidebar">

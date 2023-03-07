@@ -1,6 +1,6 @@
 <script lang="ts">
   import { apiReq } from "../../ts/api/main";
-  import { detailsData, editData, egTokenKey } from "../../ts/env";
+  import { detailsData, editData, egTokenKey, LOCKED } from "../../ts/env";
 
   import { onMount } from "svelte";
   import { loadFromStore } from "../../ts/page/main";
@@ -22,7 +22,7 @@
 
   onMount(async () => {
     data = get(detailsData);
-    
+
     registrar = data.registrar;
     eggCount = parseInt(data.amount as string);
     dateInput = data.timestamp;
@@ -41,37 +41,39 @@
 </script>
 
 {#if render}
-<div class="list">
-  <div class="header">
-    <button class="suggested" on:click={edit}>
-      <span class="material-icons">edit</span><span> Bewerken</span>
-    </button>
-    <button on:click={close}>
-      <span class="material-icons">cancel</span><span> Sluiten</span>
-    </button>
+  <div class="list">
+    <div class="header">
+      <button class="suggested" on:click={edit} disabled={LOCKED}>
+        <span class="material-icons">edit</span><span> Bewerken</span>
+      </button>
+      <button on:click={close}>
+        <span class="material-icons">cancel</span><span> Sluiten</span>
+      </button>
+    </div>
+    <div class="content fullheight">
+      {#if $detailsData}
+        <p class="title">
+          Klik op bewerken als je incorrecte informatie moet bewerken.
+        </p>
+        <table>
+          <tr>
+            <td>Datum: </td>
+            <td>{dayjs(data.timestamp).format("DD-MM-YYYY")}</td>
+          </tr>
+          <tr
+            ><td> Aantal: &nbsp;&nbsp;</td><td>
+              <span class="counter">{eggCount}</span>
+              <span>
+                {#each Array(eggCount) as _}<img src={logo} alt="Logo" />{/each}
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>Wie?</td>
+            <td>{registrar}</td>
+          </tr>
+        </table>
+      {/if}
+    </div>
   </div>
-  <div class="content fullheight">
-    {#if $detailsData}
-      <p class="title">Klik op bewerken als je incorrecte informatie moet bewerken.</p>
-      <table>
-        <tr>
-          <td>Datum: </td>
-          <td>{dayjs(data.timestamp).format("DD-MM-YYYY")}</td>
-        </tr>
-        <tr
-          ><td> Aantal: &nbsp;&nbsp;</td><td>
-            <span class="counter">{eggCount}</span>
-            <span>
-              {#each Array(eggCount) as _}<img src={logo} alt="Logo" />{/each}
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td>Wie?</td>
-          <td>{registrar}</td>
-        </tr>
-      </table>
-    {/if}
-  </div>
-</div>
 {/if}
