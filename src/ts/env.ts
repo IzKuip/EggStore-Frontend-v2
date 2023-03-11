@@ -21,4 +21,4 @@ export const confirmationData = writable<[boolean, Confirmation]>([
   false,
   null,
 ]);
-export const LOCKED = true;
+export const LOCKED = false;
