@@ -24,7 +24,7 @@
   {#if isLoggedIn}
     <div class="top">
       <img src={logo} alt="Egg" />
-      <h2>Reggistry - {$eggCount}</h2>
+      <h2>{$eggCount} eieren</h2>
     </div>
     <div class="bottom">
       <p>
@@ -45,6 +45,20 @@
       {#each SideBarPageLinks as link}
         <PageLink data={link} />
       {/each}
+      <button class="small flat fullwidth pagelink upcoming">
+        <span class="material-icons">star</span>
+        <span>Binnenkort! Reggistry v3</span>
+      </button>
     </div>
   {/if}
 </div>
+
+<style scoped>
+  .upcoming span.material-icons {
+    color: orange;
+  }
+
+  .upcoming {
+    margin-top: 10px;
+  }
+</style>
