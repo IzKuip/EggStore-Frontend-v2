@@ -28,7 +28,7 @@ button:active {
 
 input {
   border: var(--border-clr) 1px solid;
-  padding: 10px 5px;
+  padding: 10px 12.5px;
   background-color: var(--input-bg);
 }
 
@@ -39,6 +39,10 @@ input {
 button.flat {
   background-color: transparent;
   border: none;
+}
+
+div.header button.flat {
+  margin-left: 10px;
 }
 
 button.flat:hover {
@@ -66,7 +70,6 @@ button.suggested:active {
 
 button.danger {
   background-color: rgba(255, 0, 0, 0.2);
-  border: #0002 1px solid;
 }
 
 button.danger:hover {

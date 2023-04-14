@@ -91,7 +91,7 @@
     <span class="count">Aantal</span>
     <span class="person">Wie?</span>
   </div>
-  <div class="content withrow" bind:this={element}>
+  <div class="content" bind:this={element}>
     {#if eggList && !reloading}
       {#each eggList as entry}
         {count(entry)}
@@ -99,15 +99,14 @@
       {/each}
       {#if !eggList.length}
         <p class="loading">
-          <span class="material-icons">cancel</span><span
-            >De reggistry is leeg.
-          </span>
-        </p>{/if}
+          <span class="material-icons">cancel</span>
+          <span> De reggistry is leeg. </span>
+        </p>
+      {/if}
     {:else}
       <p class="loading">
-        <span class="material-icons">hourglass_empty</span><span
-          >Verbinden met {appDstName} server
-        </span>
+        <span class="material-icons">hourglass_empty</span>
+        <span>Verbinden met {appDstName} server </span>
       </p>
     {/if}
   </div>

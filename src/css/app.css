@@ -1,11 +1,11 @@
 div.app.nosidebar div.pagecontent {
-    left:0px;
-    width:100%;
+  left: 0px;
+  width: 100%;
 }
 
-@media screen and (min-width:900px) {
-    div.app.nosidebar div.pagecontent {
-        left:300px;
-        width:calc(100% - 300px);
-    }
+@media screen and (min-width: 800px) {
+  div.app.nosidebar div.pagecontent {
+    left: 300px;
+    width: calc(100% - 300px);
+  }
 }

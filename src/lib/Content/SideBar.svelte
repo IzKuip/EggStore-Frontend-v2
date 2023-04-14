@@ -24,11 +24,9 @@
   {#if isLoggedIn}
     <div class="top">
       <img src={logo} alt="Egg" />
-      <h2>{appDstName}</h2>
+      <h2>Reggistry - {$eggCount}</h2>
     </div>
     <div class="bottom">
-      <h3>Eieren totaal: {$eggCount}</h3>
-      <br />
       <p>
         Versie {appDstVers.join(".")}
         <br />

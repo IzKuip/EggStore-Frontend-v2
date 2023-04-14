@@ -113,7 +113,7 @@ div.list div.content button.danger {
   margin-top:10px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   div.list .date {
     width: 105px;
   }

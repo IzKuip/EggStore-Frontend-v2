@@ -67,14 +67,14 @@ div.confirmation div.body div.actions {
   margin-top: auto;
   width: 100%;
   display: flex;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 div.confirmation div.body div.actions div {
-  margin: 0 auto;
+  margin-left: auto;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   div.confirmation div.body {
     width: 100%;
     max-width: unset;

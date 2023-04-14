@@ -52,9 +52,6 @@
     </div>
     <div class="content fullheight">
       {#if $detailsData}
-        <p class="title">
-          Klik op bewerken als je incorrecte informatie moet bewerken.
-        </p>
         <table>
           <tr>
             <td>Datum: </td>

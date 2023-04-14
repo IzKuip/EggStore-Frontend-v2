@@ -1,19 +1,16 @@
 div.pagecontent {
-    position:fixed;
-    top:50px;
-    left:300px;
-    width:calc(100% - 300px);
-    height:calc(100% - 50px);
-    box-sizing: border-box;
-    background-color: var(--colored-bg);
-    transition:left 0.3s, width 0.3s;
-    padding:10px;
+  position: fixed;
+  top: 50px;
+  left: 300px;
+  width: calc(100% - 300px);
+  height: calc(100% - 50px);
+  box-sizing: border-box;
+  transition: left 0.3s, width 0.3s;
 }
 
-
-@media screen and (max-width: 900px) {
-    div.pagecontent {
-      left:100%;
-      width:100%;
-    }
+@media screen and (max-width: 800px) {
+  div.pagecontent {
+    left: 100%;
+    width: 100%;
   }
+}

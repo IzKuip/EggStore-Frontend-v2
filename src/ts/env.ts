@@ -6,7 +6,7 @@ import type { Page } from "./page/interfaces";
 export const isLoggedIn = writable<boolean>(false);
 export const EggApiServ = `https://eggsapi.twiserver.nl`;
 export const appDstName = "Reggistry";
-export const appDstVers = [2, 2, 3];
+export const appDstVers = [2, 2, 5];
 export const egTokenKey = "eggToken";
 export const sideBarOpened = writable<boolean>(false);
 export const eggCount = writable<number>(0);
