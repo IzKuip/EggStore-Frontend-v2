@@ -18,6 +18,10 @@
       username = atob(localStorage.getItem(egTokenKey)).split(":")[0];
     }
   });
+
+  function openBeta() {
+    location.href = "/beta-v3";
+  }
 </script>
 
 <div class="sidebar">
@@ -45,7 +49,10 @@
       {#each SideBarPageLinks as link}
         <PageLink data={link} />
       {/each}
-      <button class="small flat fullwidth pagelink upcoming">
+      <button
+        class="small flat fullwidth pagelink upcoming"
+        on:click={openBeta}
+      >
         <span class="material-icons">star</span>
         <span>Binnenkort! Reggistry v3</span>
       </button>
